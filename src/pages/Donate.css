@@ -1,0 +1,90 @@
+.subtitle-text {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 3rem;
+}
+
+.donation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.donation-category {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+    transition: 0.3s;
+    border: 1px solid #eee;
+}
+
+.donation-category:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+}
+
+.donation-category.featured {
+    background: linear-gradient(135deg, var(--bg-cream), #fff);
+    border: 2px solid var(--gold);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-gold);
+}
+
+.donation-category h3 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.amount {
+    font-size: 2.5rem;
+    color: var(--deep-orange);
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-heading);
+}
+
+.btn-donate {
+    background: var(--text-dark);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 500;
+}
+
+.btn-donate:hover {
+    background: var(--deep-orange);
+}
+
+.qr-section {
+    display: flex;
+    justify-content: center;
+}
+
+.qr-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+    border: 2px dashed var(--gold);
+    max-width: 500px;
+    width: 100%;
+}
+
+.qr-placeholder {
+    margin: 2rem 0;
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.bank-details p {
+    margin-bottom: 0.5rem;
+    color: #555;
+}

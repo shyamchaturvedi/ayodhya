@@ -1,0 +1,56 @@
+.form-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-card);
+    border-top: 5px solid var(--deep-orange);
+}
+
+.participation-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.participation-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.participation-form input[type="text"],
+.participation-form input[type="tel"],
+.participation-form input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.participation-form input:focus {
+    border-color: var(--saffron);
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 153, 51, 0.2);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.full-width {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+}

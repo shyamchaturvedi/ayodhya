@@ -1,0 +1,180 @@
+.hero-section {
+    height: 90vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    border-bottom: 5px solid var(--gold);
+}
+
+.hero-content {
+    width: 100%;
+    padding-top: 2rem;
+}
+
+.main-title {
+    font-size: 4rem;
+    color: var(--gold);
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin: 1rem 0;
+    line-height: 1.2;
+}
+
+.kund-count {
+    font-size: 2.5rem;
+    color: white;
+    display: block;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.event-details {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid var(--gold);
+    backdrop-filter: blur(5px);
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.btn-large {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.btn-secondary:hover {
+    background: var(--gold);
+    color: var(--text-dark);
+}
+
+.countdown-timer {
+    margin-top: 2rem;
+}
+
+.timer-box {
+    background: rgba(255, 153, 51, 0.9);
+    /* Saffron */
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 10px;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.timer-box .days {
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    display: block;
+    line-height: 1;
+}
+
+.timer-box .label {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+/* Intro Section */
+.intro-section {
+    padding: 5rem 1rem;
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.poster-img {
+    border-radius: 10px;
+    box-shadow: var(--shadow-card);
+    border: 4px solid var(--gold);
+}
+
+.intro-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.intro-text h2::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background: var(--saffron);
+}
+
+.intro-text p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+    text-align: justify;
+}
+
+.blessing-quote {
+    background-color: var(--bg-cream);
+    padding: 1.5rem;
+    border-left: 5px solid var(--deep-orange);
+    font-style: italic;
+    font-weight: 600;
+    color: var(--deep-orange);
+    font-family: var(--font-heading);
+}
+
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .intro-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}
