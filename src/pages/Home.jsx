@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaCalendarAlt, FaMapMarkerAlt, FaOm } from 'react-icons/fa';
 import './Home.css';
 import '../variables.css';
+import SEO from '../components/SEO';
 
 const Home = () => {
     const [daysLeft, setDaysLeft] = useState(0);
@@ -22,6 +23,11 @@ const Home = () => {
 
     return (
         <div className="home-container">
+            <SEO
+                title="शुभकामनाएं"
+                description="विश्व के प्रथम श्री राम राज्य महायज्ञ 2026 में आमंत्रित हैं। अयोध्या धाम में 9011 कुंडीय महायज्ञ का भव्य आयोजन। जुड़ें और पुण्य के भागी बनें।"
+                keywords="Ram Rajya Mahayagya, Ayodhya Yagya 2026, Vishwa Ka Pratham Yagya, 9011 Kundiya Yagya"
+            />
             {/* Hero Section */}
             {/* Hero Section */}
             <section className="hero">

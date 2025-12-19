@@ -3,10 +3,12 @@ import './Donate.css';
 import { QRCodeSVG } from 'qrcode.react';
 import { supabase } from '../supabaseClient';
 import { FaHandHoldingHeart, FaOm, FaQrcode } from 'react-icons/fa';
+import SEO from '../components/SEO';
 
 const Donate = () => {
-    const [upiId, setUpiId] = useState('9838272583@okbizaxis');
+    const [upiId, setUpiId] = useState('');
     const [loading, setLoading] = useState(true);
+    const [qrCodeData, setQrCodeData] = useState('');
 
     // Fetch UPI ID from database on load
     useEffect(() => {
