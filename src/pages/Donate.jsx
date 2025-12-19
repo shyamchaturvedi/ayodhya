@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './Donate.css';
 import { QRCodeSVG } from 'qrcode.react';
 import { supabase } from '../supabaseClient';
-import { FaHandHoldingHeart, FaOm, FaQrcode } from 'react-icons/fa';
+import { FaHandHoldingHeart, FaOm, FaQrcode, FaRupeeSign } from 'react-icons/fa';
 
 const Donate = () => {
     const [upiId, setUpiId] = useState('9838272583@okbizaxis');
     const [loading, setLoading] = useState(true);
+    const [customAmount, setCustomAmount] = useState('');
 
     // Fetch UPI ID from database on load
     useEffect(() => {
@@ -31,6 +32,11 @@ const Donate = () => {
     }, []);
 
     const handleDonate = async (amount, category) => {
+        if (!amount || amount <= 0) {
+            alert('कृपया सही राशि दर्ज करें');
+            return;
+        }
+
         const storedUser = localStorage.getItem('userData');
         const user = storedUser ? JSON.parse(storedUser) : null;
         const donorName = user ? user.name : 'Anonymous Ram Bhakt';
@@ -51,6 +57,15 @@ const Donate = () => {
         window.location.href = upiUrl;
     };
 
+    const handleCustomDonate = () => {
+        const amount = parseInt(customAmount);
+        if (amount && amount > 0) {
+            handleDonate(amount, 'अन्य दान');
+        } else {
+            alert('कृपया सही राशि दर्ज करें');
+        }
+    };
+
     // Generate UPI URL for QR code
     const getUpiUrl = (amount = '') => {
         const payeeName = 'Shri Ram Rajya Mahayagya';
@@ -66,6 +81,7 @@ const Donate = () => {
         { title: 'आहुति सेवा', amount: 501, icon: '🔥' },
         { title: 'महायज्ञ सहयोग', amount: 2100, icon: '🙏' },
         { title: 'विशेष यजमान', amount: 11000, icon: '👑' },
+        { title: 'महा यजमान', amount: 51000, icon: '🏆' },
     ];
 
     return (
@@ -104,6 +120,36 @@ const Donate = () => {
                             </button>
                         </div>
                     ))}
+
+                    {/* Custom Amount Card */}
+                    <div className="donation-category premium-card custom-donation-card">
+                        <span className="donation-icon">💝</span>
+                        <h3>अन्य राशि</h3>
+                        <div className="custom-amount-input">
+                            <span className="rupee-symbol">₹</span>
+                            <input
+                                type="number"
+                                placeholder="राशि दर्ज करें"
+                                value={customAmount}
+                                onChange={(e) => setCustomAmount(e.target.value)}
+                                min="1"
+                            />
+                        </div>
+                        <div className="quick-amounts">
+                            <button onClick={() => setCustomAmount('1100')}>₹1,100</button>
+                            <button onClick={() => setCustomAmount('5100')}>₹5,100</button>
+                            <button onClick={() => setCustomAmount('11000')}>₹11,000</button>
+                            <button onClick={() => setCustomAmount('21000')}>₹21,000</button>
+                        </div>
+                        <button
+                            className="btn-primary-theme"
+                            onClick={handleCustomDonate}
+                            disabled={!customAmount || parseInt(customAmount) <= 0}
+                        >
+                            <FaHandHoldingHeart style={{ marginRight: '8px' }} />
+                            दान करें
+                        </button>
+                    </div>
                 </div>
 
                 {/* QR Code Section */}

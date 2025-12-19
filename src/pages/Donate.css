@@ -152,6 +152,76 @@
     font-weight: 500;
 }
 
+/* Custom Donation Card */
+.custom-donation-card {
+    background: linear-gradient(135deg, #FFF8E1, #FFECB3) !important;
+    border: 2px dashed var(--gold);
+}
+
+.custom-amount-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    background: white;
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    padding: 5px;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.custom-amount-input .rupee-symbol {
+    font-size: 1.5rem;
+    color: var(--deep-orange);
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+.custom-amount-input input {
+    border: none;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #5D3A1A;
+    width: 100%;
+    text-align: center;
+    outline: none;
+    background: transparent;
+}
+
+.custom-amount-input input::placeholder {
+    color: #ccc;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.quick-amounts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.quick-amounts button {
+    background: white;
+    border: 1px solid #E8D5C4;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #5D3A1A;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.quick-amounts button:hover {
+    background: var(--gold);
+    color: #3E2723;
+    border-color: var(--gold);
+}
+
 /* Info Box */
 .info-box {
     margin-top: 3rem;
