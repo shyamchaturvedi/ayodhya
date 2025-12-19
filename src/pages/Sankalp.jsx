@@ -52,10 +52,17 @@ const Sankalp = () => {
                         village: data.city || '',
                         state: data.state || ''
                     }));
+                } else {
+                    // Redirect if user found in local storage but not in DB (invalid state)
+                    navigate('/login');
                 }
+            } else {
+                // Redirect if not logged in
+                navigate('/login');
             }
         } catch (error) {
             console.error('Error checking login:', error);
+            navigate('/login');
         } finally {
             setLoading(false);
         }
@@ -395,37 +402,9 @@ const Sankalp = () => {
                     </div>
                 </div>
 
-                {/* Check if user is logged in */}
-                {!isLoggedIn ? (
-                    /* Not Logged In - Show Registration CTA */
-                    <div className="login-required-section">
-                        <div className="login-required-card">
-                            <div className="lock-icon">🔒</div>
-                            <h2>संकल्प पत्र के लिए पंजीकरण आवश्यक है</h2>
-                            <p>अपना संकल्प पत्र प्राप्त करने के लिए कृपया पहले पंजीकरण करें या लॉगिन करें।</p>
 
-                            <div className="auth-buttons">
-                                <Link to="/participate" className="btn-register">
-                                    🙏 अभी पंजीकरण करें
-                                </Link>
-                                <Link to="/login" className="btn-login">
-                                    🔑 पहले से पंजीकृत? लॉगिन करें
-                                </Link>
-                            </div>
-
-                            <div className="benefits-box">
-                                <h4>पंजीकरण के लाभ:</h4>
-                                <ul>
-                                    <li>✅ व्यक्तिगत संकल्प पत्र प्राप्त करें</li>
-                                    <li>✅ यज्ञ में सहभागिता का प्रमाण पत्र</li>
-                                    <li>✅ विशेष Member ID</li>
-                                    <li>✅ यज्ञ की अपडेट्स प्राप्त करें</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                ) : (
-                    /* User is Logged In - Show Certificate Form */
+                {/* Logic handled via useEffect redirect */}
+                {isLoggedIn && (
                     <>
                         {/* Welcome Message */}
                         <div className="welcome-user">
