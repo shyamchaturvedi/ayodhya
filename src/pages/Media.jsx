@@ -5,7 +5,7 @@ import { FaPlay, FaOm, FaImage } from 'react-icons/fa';
 // Importing Saint Images (Local Assets)
 import bhagirathImg from '../assets/bhagirath.jpg';
 import vishwamitraImg from '../assets/vishwamitra.webp';
-import vashishthaImg from '../assets/vashishtha.avif';
+import vashishthaImg from '../assets/vashishtha.png';
 import dashrathImg from '../assets/dashrath.jpg';
 import valmikiImg from '../assets/valmiki.jpg';
 import devrahaBabaImg from '../assets/devraha_baba.png';
