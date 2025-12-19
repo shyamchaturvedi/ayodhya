@@ -22,11 +22,13 @@
 }
 
 .pre-title {
-    font-size: 1.5rem;
+    font-size: 2.2rem;
     color: var(--deep-orange);
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    margin-bottom: 0;
-    font-weight: 600;
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .main-title {
@@ -251,7 +253,8 @@
     }
 
     .pre-title {
-        font-size: 1rem;
+        font-size: 1.4rem;
+        margin-top: 1rem;
     }
 
     .main-title {
