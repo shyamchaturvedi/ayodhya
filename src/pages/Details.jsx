@@ -5,7 +5,7 @@ import { FaOm, FaCalendarAlt, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
 const Details = () => {
     const schedule = [
         {
-            date: '10 मई 2026',
+            date: '11 मई 2026',
             time: '08:30 AM',
             title: 'कलश यात्रा',
             desc: 'भव्य कलश यात्रा का शुभारंभ।',

@@ -154,16 +154,18 @@
     .nav-menu {
         position: fixed;
         top: 70px;
-        /* Adjust based on header height */
         left: -100%;
         width: 100%;
         height: calc(100vh - 70px);
-        background-color: var(--sacred-white);
+        background: linear-gradient(135deg, #FFF8E1 0%, #FFFDE7 100%);
+        display: flex;
         flex-direction: column;
         align-items: center;
         padding-top: 2rem;
         transition: 0.3s ease-in-out;
-        box-shadow: var(--shadow-card);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        z-index: 999;
+        overflow-y: auto;
     }
 
     .nav-menu.active {
@@ -172,12 +174,51 @@
 
     .nav-menu ul {
         flex-direction: column;
-        gap: 1.5rem;
-        align-items: center;
+        gap: 0;
+        width: 100%;
+        padding: 0;
+    }
+
+    .nav-menu ul li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+    }
+
+    .nav-menu ul li a {
+        display: block;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        color: #5D3A1A;
+        transition: all 0.3s ease;
+    }
+
+    .nav-menu ul li a:hover {
+        background: rgba(255, 215, 0, 0.2);
+        color: var(--deep-orange);
+    }
+
+    .nav-menu ul li a::after {
+        display: none;
+    }
+
+    .login-link-nav {
+        margin: 0.5rem auto !important;
+        display: inline-block !important;
     }
 
     .cta-buttons-mobile {
         display: block;
         margin-top: 2rem;
+        padding: 0 2rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .cta-buttons-mobile .btn-primary {
+        width: 80%;
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 1.1rem;
     }
 }
