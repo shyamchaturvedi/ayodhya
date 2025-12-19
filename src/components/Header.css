@@ -1,3 +1,4 @@
+/* ===== HEADER - FIXED MOBILE NAVIGATION ===== */
 .header {
     background-color: var(--sacred-white);
     background-image: linear-gradient(to bottom, #fffaf0, #fff8e1);
@@ -47,7 +48,6 @@
     flex-direction: column;
     justify-content: center;
     min-width: 140px;
-    /* Ensure text has minimum space */
 }
 
 .logo h1 {
@@ -68,21 +68,32 @@
     line-height: 1.2;
 }
 
+/* Navigation Menu - Desktop */
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+
 .nav-menu ul {
     display: flex;
     gap: 1.2rem;
     margin: 0;
     padding: 0;
     align-items: center;
+    list-style: none;
+}
+
+.nav-menu ul li {
+    list-style: none;
 }
 
 .nav-menu a {
     font-weight: 600;
     color: var(--text-dark);
     font-size: 0.95rem;
-    /* Slightly smaller for better fit */
     position: relative;
     white-space: nowrap;
+    text-decoration: none;
 }
 
 .nav-menu a:hover {
@@ -119,8 +130,7 @@
 }
 
 .login-link-nav::after {
-    display: none;
-    /* No underline for button-like link */
+    display: none !important;
 }
 
 .header-actions {
@@ -129,47 +139,68 @@
     gap: 1rem;
 }
 
+/* Mobile Menu Icon - Hidden on Desktop */
 .mobile-menu-icon {
     display: none;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     background: none;
     border: none;
     cursor: pointer;
-    color: var(--text-dark);
+    color: var(--deep-orange);
+    padding: 8px;
+    z-index: 1001;
 }
 
 .cta-buttons-mobile {
     display: none;
 }
 
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .nav-menu ul {
+        gap: 0.8rem;
+    }
+
+    .nav-menu a {
+        font-size: 0.85rem;
+    }
+}
+
 @media (max-width: 768px) {
+
+    /* Show hamburger icon */
     .mobile-menu-icon {
-        display: block;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
     }
 
+    /* Hide desktop donate button */
     .desktop-only {
-        display: none;
+        display: none !important;
     }
 
+    /* Mobile Navigation Menu */
     .nav-menu {
         position: fixed;
-        top: 70px;
+        top: 0;
         left: -100%;
         width: 100%;
-        height: calc(100vh - 70px);
-        background: linear-gradient(135deg, #FFF8E1 0%, #FFFDE7 100%);
-        display: flex;
+        height: 100vh;
+        background: linear-gradient(180deg, #FFF8E1 0%, #FFFDE7 50%, #FFF3E0 100%);
+        display: flex !important;
         flex-direction: column;
         align-items: center;
-        padding-top: 2rem;
-        transition: 0.3s ease-in-out;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        z-index: 999;
+        justify-content: flex-start;
+        padding-top: 100px;
+        transition: left 0.3s ease-in-out;
+        box-shadow: 5px 0 30px rgba(0, 0, 0, 0.3);
+        z-index: 998;
         overflow-y: auto;
     }
 
     .nav-menu.active {
-        left: 0;
+        left: 0 !important;
     }
 
     .nav-menu ul {
@@ -177,48 +208,91 @@
         gap: 0;
         width: 100%;
         padding: 0;
+        margin: 0;
+        list-style: none;
     }
 
     .nav-menu ul li {
         width: 100%;
         text-align: center;
-        border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+        border-bottom: 1px solid rgba(230, 81, 0, 0.15);
+        list-style: none;
     }
 
     .nav-menu ul li a {
-        display: block;
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
+        display: block !important;
+        padding: 18px 25px;
+        font-size: 1.2rem;
         color: #5D3A1A;
+        font-weight: 600;
         transition: all 0.3s ease;
+        text-decoration: none;
     }
 
-    .nav-menu ul li a:hover {
-        background: rgba(255, 215, 0, 0.2);
+    .nav-menu ul li a:hover,
+    .nav-menu ul li a:active {
+        background: linear-gradient(90deg, rgba(255, 215, 0, 0.3), transparent);
         color: var(--deep-orange);
     }
 
     .nav-menu ul li a::after {
-        display: none;
+        display: none !important;
     }
 
     .login-link-nav {
-        margin: 0.5rem auto !important;
+        margin: 10px auto !important;
         display: inline-block !important;
+        background: var(--deep-orange) !important;
+        color: white !important;
+        padding: 12px 30px !important;
     }
 
+    /* Mobile Donate Button */
     .cta-buttons-mobile {
-        display: block;
-        margin-top: 2rem;
-        padding: 0 2rem;
+        display: block !important;
+        margin-top: 30px;
+        padding: 0 25px;
         width: 100%;
         text-align: center;
     }
 
     .cta-buttons-mobile .btn-primary {
-        width: 80%;
+        width: 90%;
+        max-width: 280px;
         display: inline-block;
-        padding: 15px 30px;
+        padding: 16px 35px;
+        font-size: 1.2rem;
+        background: linear-gradient(135deg, #C73E2C, #FF6B00);
+        color: white;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        box-shadow: 0 8px 20px rgba(199, 62, 44, 0.3);
+    }
+
+    /* Close button styling when menu open */
+    .header {
+        position: fixed;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 1.1rem;
+    }
+
+    .logo span {
+        font-size: 0.7rem;
+    }
+
+    .logo img {
+        height: 45px;
+        width: 45px;
+    }
+
+    .nav-menu ul li a {
+        padding: 15px 20px;
         font-size: 1.1rem;
     }
 }
