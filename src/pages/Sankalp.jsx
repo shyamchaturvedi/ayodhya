@@ -30,6 +30,7 @@ const Sankalp = () => {
         return () => clearInterval(interval);
     }, []);
 
+
     const checkUserLogin = async () => {
         try {
             const userPhone = localStorage.getItem('userPhone');
@@ -52,20 +53,17 @@ const Sankalp = () => {
                         village: data.city || '',
                         state: data.state || ''
                     }));
-                } else {
-                    // Redirect if user found in local storage but not in DB (invalid state)
-                    navigate('/login');
                 }
-            } else {
-                // Redirect if not logged in
-                navigate('/login');
             }
         } catch (error) {
             console.error('Error checking login:', error);
-            navigate('/login');
         } finally {
             setLoading(false);
         }
+    };
+
+    const handleGetCertificate = () => {
+        navigate('/login');
     };
 
     const handleInputChange = (e) => {
@@ -80,6 +78,7 @@ const Sankalp = () => {
         }
         setShowCertificate(true);
     };
+
 
     const printCertificate = () => {
         const printWindow = window.open('', '_blank');
@@ -403,192 +402,203 @@ const Sankalp = () => {
                 </div>
 
 
-                {/* Logic handled via useEffect redirect */}
-                {isLoggedIn && (
-                    <>
-                        {/* Welcome Message */}
-                        <div className="welcome-user">
-                            <p>🙏 <strong>जय श्री राम, {userData?.name || 'भक्त'}!</strong></p>
-                            <p className="member-id">आपकी Member ID: <code>{userData?.member_id}</code></p>
-                        </div>
-
-                        {/* Certificate Form */}
-                        {!showCertificate ? (
-                            <div className="certificate-form-section">
-                                <h2 className="form-title">
-                                    <span>॥</span> अपना संकल्प पत्र बनाएं <span>॥</span>
-                                </h2>
-                                <p className="form-subtitle">नीचे अपनी जानकारी भरें और अपना संकल्प पत्र प्राप्त करें</p>
-
-                                <form className="certificate-form" onSubmit={generateCertificate}>
-                                    <div className="form-row">
-                                        <div className="form-group">
-                                            <label>आपका पूरा नाम *</label>
-                                            <input
-                                                type="text"
-                                                name="name"
-                                                value={formData.name}
-                                                onChange={handleInputChange}
-                                                placeholder="श्री/श्रीमती..."
-                                                required
-                                            />
-                                        </div>
-                                        <div className="form-group">
-                                            <label>पिता/पति का नाम *</label>
-                                            <input
-                                                type="text"
-                                                name="fatherName"
-                                                value={formData.fatherName}
-                                                onChange={handleInputChange}
-                                                placeholder="श्री..."
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="form-row">
-                                        <div className="form-group">
-                                            <label>गोत्र</label>
-                                            <input
-                                                type="text"
-                                                name="gotra"
-                                                value={formData.gotra}
-                                                onChange={handleInputChange}
-                                                placeholder="भारद्वाज, कश्यप, आदि"
-                                            />
-                                        </div>
-                                        <div className="form-group">
-                                            <label>ग्राम/नगर</label>
-                                            <input
-                                                type="text"
-                                                name="village"
-                                                value={formData.village}
-                                                onChange={handleInputChange}
-                                                placeholder="आपका गाँव/शहर"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="form-row">
-                                        <div className="form-group">
-                                            <label>जिला</label>
-                                            <input
-                                                type="text"
-                                                name="district"
-                                                value={formData.district}
-                                                onChange={handleInputChange}
-                                                placeholder="जिले का नाम"
-                                            />
-                                        </div>
-                                        <div className="form-group">
-                                            <label>राज्य</label>
-                                            <input
-                                                type="text"
-                                                name="state"
-                                                value={formData.state}
-                                                onChange={handleInputChange}
-                                                placeholder="उत्तर प्रदेश, आदि"
-                                            />
-                                        </div>
-                                    </div>
-                                    <button type="submit" className="btn-generate">
-                                        🙏 संकल्प पत्र बनाएं
-                                    </button>
-                                </form>
+                {/* Action Section */}
+                <div className="action-section" style={{ textAlign: 'center', marginTop: '3rem' }}>
+                    {!isLoggedIn ? (
+                        <button
+                            onClick={handleGetCertificate}
+                            className="btn-generate"
+                            style={{ maxWidth: '400px', margin: '0 auto' }}
+                        >
+                            🙏 संकल्प पत्र प्राप्त करें
+                        </button>
+                    ) : (
+                        /* User is Logged In - Show Certificate Form */
+                        <>
+                            {/* Welcome Message */}
+                            <div className="welcome-user">
+                                <p>🙏 <strong>जय श्री राम, {userData?.name || 'भक्त'}!</strong></p>
+                                <p className="member-id">आपकी Member ID: <code>{userData?.member_id}</code></p>
                             </div>
-                        ) : (
-                            /* Certificate Display */
-                            <div className="certificate-section">
-                                <div className="certificate-actions no-print">
-                                    <button className="btn-action" onClick={printCertificate}>🖨️ प्रिंट करें</button>
-                                    <button className="btn-action" onClick={() => setShowCertificate(false)}>✏️ संपादित करें</button>
-                                </div>
 
-                                <div className="sankalpatra" ref={certificateRef}>
-                                    {/* Certificate Header */}
-                                    <div className="cert-header">
-                                        <div className="cert-border-top"></div>
-                                        <div className="cert-om">🕉️</div>
-                                        <h1 className="cert-title">॥ श्री राम राज्य संकल्प पत्र ॥</h1>
-                                        <p className="cert-subtitle">SHRI RAM RAJYA SANKALP PATRA</p>
-                                        <p className="cert-member-id">Member ID: {userData?.member_id}</p>
-                                        <div className="cert-line"></div>
+                            {/* Certificate Form */}
+                            {!showCertificate ? (
+                                <div className="certificate-form-section">
+                                    <h2 className="form-title">
+                                        <span>॥</span> अपना संकल्प पत्र बनाएं <span>॥</span>
+                                    </h2>
+                                    <p className="form-subtitle">नीचे अपनी जानकारी भरें और अपना संकल्प पत्र प्राप्त करें</p>
+
+                                    <form className="certificate-form" onSubmit={generateCertificate}>
+                                        <div className="form-row">
+                                            <div className="form-group">
+                                                <label>आपका पूरा नाम *</label>
+                                                <input
+                                                    type="text"
+                                                    name="name"
+                                                    value={formData.name}
+                                                    onChange={handleInputChange}
+                                                    placeholder="श्री/श्रीमती..."
+                                                    required
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>पिता/पति का नाम *</label>
+                                                <input
+                                                    type="text"
+                                                    name="fatherName"
+                                                    value={formData.fatherName}
+                                                    onChange={handleInputChange}
+                                                    placeholder="श्री..."
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-row">
+                                            <div className="form-group">
+                                                <label>गोत्र</label>
+                                                <input
+                                                    type="text"
+                                                    name="gotra"
+                                                    value={formData.gotra}
+                                                    onChange={handleInputChange}
+                                                    placeholder="भारद्वाज, कश्यप, आदि"
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>ग्राम/नगर</label>
+                                                <input
+                                                    type="text"
+                                                    name="village"
+                                                    value={formData.village}
+                                                    onChange={handleInputChange}
+                                                    placeholder="आपका गाँव/शहर"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-row">
+                                            <div className="form-group">
+                                                <label>जिला</label>
+                                                <input
+                                                    type="text"
+                                                    name="district"
+                                                    value={formData.district}
+                                                    onChange={handleInputChange}
+                                                    placeholder="जिले का नाम"
+                                                />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>राज्य</label>
+                                                <input
+                                                    type="text"
+                                                    name="state"
+                                                    value={formData.state}
+                                                    onChange={handleInputChange}
+                                                    placeholder="उत्तर प्रदेश, आदि"
+                                                />
+                                            </div>
+                                        </div>
+                                        <button type="submit" className="btn-generate">
+                                            🙏 संकल्प पत्र बनाएं
+                                        </button>
+                                    </form>
+                                </div>
+                            ) : (
+                                /* Certificate Display */
+                                <div className="certificate-section">
+                                    <div className="certificate-actions no-print">
+                                        <button className="btn-action" onClick={printCertificate}>🖨️ प्रिंट करें</button>
+                                        <button className="btn-action" onClick={() => setShowCertificate(false)}>✏️ संपादित करें</button>
                                     </div>
 
-                                    {/* Certificate Body */}
-                                    <div className="cert-body">
-                                        <p className="cert-intro">
-                                            विश्व के प्रथम श्री राम राज्य महायज्ञ, अयोध्या धाम के पावन अवसर पर
-                                        </p>
-
-                                        <div className="cert-details">
-                                            <div className="detail-row">
-                                                <span className="label">संकल्पकर्ता का नाम:</span>
-                                                <span className="value">{formData.name || '_______________'}</span>
-                                            </div>
-                                            <div className="detail-row">
-                                                <span className="label">पिता/पति श्री:</span>
-                                                <span className="value">{formData.fatherName || '_______________'}</span>
-                                            </div>
-                                            <div className="detail-row">
-                                                <span className="label">गोत्र:</span>
-                                                <span className="value">{formData.gotra || '_______________'}</span>
-                                            </div>
-                                            <div className="detail-row">
-                                                <span className="label">ग्राम/नगर:</span>
-                                                <span className="value">{formData.village || '_______________'}</span>
-                                            </div>
-                                            <div className="detail-row">
-                                                <span className="label">जिला:</span>
-                                                <span className="value">{formData.district || '_______________'}</span>
-                                            </div>
-                                            <div className="detail-row">
-                                                <span className="label">राज्य:</span>
-                                                <span className="value">{formData.state || '_______________'}</span>
-                                            </div>
+                                    <div className="sankalpatra" ref={certificateRef}>
+                                        {/* Certificate Header */}
+                                        <div className="cert-header">
+                                            <div className="cert-border-top"></div>
+                                            <div className="cert-om">🕉️</div>
+                                            <h1 className="cert-title">॥ श्री राम राज्य संकल्प पत्र ॥</h1>
+                                            <p className="cert-subtitle">SHRI RAM RAJYA SANKALP PATRA</p>
+                                            <p className="cert-member-id">Member ID: {userData?.member_id}</p>
+                                            <div className="cert-line"></div>
                                         </div>
 
-                                        <div className="cert-pledge">
-                                            <h3>॥ मेरा संकल्प ॥</h3>
-                                            <p>
-                                                मैं संकल्प लेता/लेती हूँ कि मैं अपने जीवन में <strong>भगवान श्री राम के आदर्शों</strong> —
-                                                सत्य, धर्म, न्याय, और मर्यादा का पालन करूँगा/करूँगी।
+                                        {/* Certificate Body */}
+                                        <div className="cert-body">
+                                            <p className="cert-intro">
+                                                विश्व के प्रथम श्री राम राज्य महायज्ञ, अयोध्या धाम के पावन अवसर पर
                                             </p>
-                                            <p>
-                                                मैं <strong>राष्ट्र की एकता, अखंडता और सनातन धर्म</strong> के उत्थान में अपना योगदान दूँगा/दूँगी।
-                                            </p>
-                                            <p>
-                                                मैं <strong>विश्व कल्याण एवं श्री राम राज्य स्थापना</strong> की इस पावन यज्ञ में तन-मन-धन से सहयोग करूँगा/करूँगी।
-                                            </p>
-                                        </div>
 
-                                        <div className="cert-footer">
-                                            <div className="footer-left">
-                                                <p className="date-line">दिनांक: {formData.date}</p>
-                                                <p className="place-line">स्थान: अयोध्या धाम</p>
-                                            </div>
-                                            <div className="footer-right">
-                                                <div className="signature-box">
-                                                    <div className="signature-line-box"></div>
-                                                    <p>संकल्पकर्ता के हस्ताक्षर</p>
+                                            <div className="cert-details">
+                                                <div className="detail-row">
+                                                    <span className="label">संकल्पकर्ता का नाम:</span>
+                                                    <span className="value">{formData.name || '_______________'}</span>
+                                                </div>
+                                                <div className="detail-row">
+                                                    <span className="label">पिता/पति श्री:</span>
+                                                    <span className="value">{formData.fatherName || '_______________'}</span>
+                                                </div>
+                                                <div className="detail-row">
+                                                    <span className="label">गोत्र:</span>
+                                                    <span className="value">{formData.gotra || '_______________'}</span>
+                                                </div>
+                                                <div className="detail-row">
+                                                    <span className="label">ग्राम/नगर:</span>
+                                                    <span className="value">{formData.village || '_______________'}</span>
+                                                </div>
+                                                <div className="detail-row">
+                                                    <span className="label">जिला:</span>
+                                                    <span className="value">{formData.district || '_______________'}</span>
+                                                </div>
+                                                <div className="detail-row">
+                                                    <span className="label">राज्य:</span>
+                                                    <span className="value">{formData.state || '_______________'}</span>
                                                 </div>
                                             </div>
+
+                                            <div className="cert-pledge">
+                                                <h3>॥ मेरा संकल्प ॥</h3>
+                                                <p>
+                                                    मैं संकल्प लेता/लेती हूँ कि मैं अपने जीवन में <strong>भगवान श्री राम के आदर्शों</strong> —
+                                                    सत्य, धर्म, न्याय, और मर्यादा का पालन करूँगा/करूँगी।
+                                                </p>
+                                                <p>
+                                                    मैं <strong>राष्ट्र की एकता, अखंडता और सनातन धर्म</strong> के उत्थान में अपना योगदान दूँगा/दूँगी।
+                                                </p>
+                                                <p>
+                                                    मैं <strong>विश्व कल्याण एवं श्री राम राज्य स्थापना</strong> की इस पावन यज्ञ में तन-मन-धन से सहयोग करूँगा/करूँगी।
+                                                </p>
+                                            </div>
+
+                                            <div className="cert-footer">
+                                                <div className="footer-left">
+                                                    <p className="date-line">दिनांक: {formData.date}</p>
+                                                    <p className="place-line">स्थान: अयोध्या धाम</p>
+                                                </div>
+                                                <div className="footer-right">
+                                                    <div className="signature-box">
+                                                        <div className="signature-line-box"></div>
+                                                        <p>संकल्पकर्ता के हस्ताक्षर</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="cert-bottom">
+                                                <p className="blessing">॥ श्री राम जय राम जय जय राम ॥</p>
+                                                <p className="event-info">विश्व का प्रथम श्री राम राज्य महायज्ञ | 11 - 21 मई 2026 | शरयू तट, अयोध्या धाम</p>
+                                            </div>
                                         </div>
 
-                                        <div className="cert-bottom">
-                                            <p className="blessing">॥ श्री राम जय राम जय जय राम ॥</p>
-                                            <p className="event-info">विश्व का प्रथम श्री राम राज्य महायज्ञ | 11 - 21 मई 2026 | शरयू तट, अयोध्या धाम</p>
-                                        </div>
+                                        {/* Decorative Corners */}
+                                        <div className="corner corner-tl"></div>
+                                        <div className="corner corner-tr"></div>
+                                        <div className="corner corner-bl"></div>
+                                        <div className="corner corner-br"></div>
                                     </div>
-
-                                    {/* Decorative Corners */}
-                                    <div className="corner corner-tl"></div>
-                                    <div className="corner corner-tr"></div>
-                                    <div className="corner corner-bl"></div>
-                                    <div className="corner corner-br"></div>
                                 </div>
-                            </div>
-                        )}
-                    </>
-                )}
+                            )}
+                        </>
+                    )}
+                </div>
             </div>
         </div>
     );
