@@ -1,0 +1,458 @@
+/* ============================================
+   SHRI RAM RAJYA MAHAYAGYA - UNIFIED THEME
+   Premium Sanatan Design System
+   ============================================ */
+
+/* ===== Common Page Hero Section ===== */
+.page-hero {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(62, 39, 35, 0.7)),
+        linear-gradient(135deg, #8B2500 0%, #C73E2C 50%, #FF6B00 100%);
+    padding: 6rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 5px solid var(--gold);
+}
+
+.page-hero::before {
+    content: 'ॐ';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 25rem;
+    color: rgba(255, 215, 0, 0.05);
+    font-family: 'Tiro Devanagari Hindi', serif;
+    pointer-events: none;
+}
+
+.page-hero .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFD700' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.page-hero .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.page-hero h1 {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    color: var(--gold);
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    margin-bottom: 0.5rem;
+    animation: slideUp 0.8s ease-out;
+}
+
+.page-hero p {
+    font-size: 1.2rem;
+    color: #FFF8F0;
+    opacity: 0.95;
+    animation: fadeIn 1s ease-out 0.3s both;
+}
+
+/* ===== Page Container ===== */
+.page-container {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #FFF8E1 0%, #FFFDE7 50%, #FFF8E1 100%);
+    background-image: radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(255, 107, 0, 0.05) 0%, transparent 50%);
+}
+
+/* ===== Content Section ===== */
+.page-content {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ===== Premium Card Style ===== */
+.premium-card {
+    background: linear-gradient(135deg, #FFFCF8, #FFF8F0);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(139, 37, 0, 0.1);
+    border: 2px solid #E8D5C4;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.premium-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #FFD700, #FF6B00, #C73E2C, #FF6B00, #FFD700);
+    border-radius: 20px 20px 0 0;
+}
+
+.premium-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(139, 37, 0, 0.15);
+}
+
+.premium-card h2,
+.premium-card h3 {
+    font-family: var(--font-heading);
+    color: #5D3A1A;
+}
+
+/* ===== Section Title ===== */
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--deep-orange);
+    text-align: center;
+    margin: 3rem 0 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::before,
+.section-title::after {
+    content: '॥';
+    color: var(--gold);
+    margin: 0 15px;
+}
+
+.section-title-center {
+    display: flex;
+    justify-content: center;
+}
+
+/* ===== Buttons ===== */
+.btn-primary-theme {
+    background: linear-gradient(135deg, #C73E2C, #8B2500);
+    color: white;
+    padding: 14px 35px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(199, 62, 44, 0.3);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary-theme:hover {
+    background: linear-gradient(135deg, #FF6B00, #C73E2C);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(199, 62, 44, 0.4);
+    color: white;
+}
+
+.btn-secondary-theme {
+    background: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-secondary-theme:hover {
+    background: var(--gold);
+    color: #3E2723;
+}
+
+.btn-gold {
+    background: linear-gradient(135deg, #FFD700, #FF8F00);
+    color: #3E2723;
+    padding: 14px 35px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-gold:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5);
+}
+
+/* ===== Form Styles ===== */
+.theme-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.theme-form label {
+    display: block;
+    color: #5D3A1A;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.theme-form input,
+.theme-form select,
+.theme-form textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #E8D5C4;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.theme-form input:focus,
+.theme-form select:focus,
+.theme-form textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2);
+}
+
+/* ===== Grid Layouts ===== */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.grid-auto {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* ===== Info Box ===== */
+.info-box {
+    background: linear-gradient(135deg, var(--saffron), var(--deep-orange));
+    color: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--shadow-gold);
+    position: relative;
+    overflow: hidden;
+}
+
+.info-box::before {
+    content: 'ॐ';
+    position: absolute;
+    right: -20px;
+    bottom: -30px;
+    font-size: 8rem;
+    opacity: 0.1;
+    color: white;
+}
+
+.info-box h3 {
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+}
+
+/* ===== Status Badges ===== */
+.status-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-verified {
+    background: #E8F5E9;
+    color: #2E7D32;
+    border: 1px solid #A5D6A7;
+}
+
+.status-pending {
+    background: #FFF3E0;
+    color: #E65100;
+    border: 1px solid #FFCC80;
+}
+
+.status-rejected {
+    background: #FFEBEE;
+    color: #C62828;
+    border: 1px solid #EF9A9A;
+}
+
+/* ===== Decorative Elements ===== */
+.om-decoration {
+    font-size: 5rem;
+    background: linear-gradient(135deg, var(--deep-orange), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+
+.divider {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--deep-orange), var(--gold), transparent);
+    margin: 2rem 0;
+    border: none;
+}
+
+.corner-decoration {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--gold);
+}
+
+.corner-tl {
+    top: 10px;
+    left: 10px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.corner-tr {
+    top: 10px;
+    right: 10px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.corner-bl {
+    bottom: 10px;
+    left: 10px;
+    border-right: none;
+    border-top: none;
+}
+
+.corner-br {
+    bottom: 10px;
+    right: 10px;
+    border-left: none;
+    border-top: none;
+}
+
+/* ===== Animations ===== */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+.animate-pulse-glow {
+    animation: pulseGlow 3s infinite;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .page-hero {
+        padding: 5rem 1.5rem 3rem;
+    }
+
+    .page-hero h1 {
+        font-size: 2rem;
+    }
+
+    .page-hero p {
+        font-size: 1rem;
+    }
+
+    .page-content {
+        padding: 2rem 1rem;
+    }
+
+    .premium-card {
+        padding: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .grid-2,
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .btn-primary-theme,
+    .btn-gold {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}

@@ -1,97 +1,291 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './Participate.css';
+import { supabase } from '../supabaseClient';
 
 const Participate = () => {
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
-        familyMembers: 1,
         gotra: '',
-        city: ''
+        familyMembers: '1',
+        city: '',
+        state: '',
+        password: '',
+        prasad: false
     });
 
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [memberData, setMemberData] = useState(null);
+    const [error, setError] = useState('');
+
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value, type, checked } = e.target;
+        setFormData({
+            ...formData,
+            [name]: type === 'checkbox' ? checked : value
+        });
     };
 
-    const handleSubmit = (e) => {
+    const generateMemberId = () => {
+        const random = Math.floor(1000 + Math.random() * 9000);
+        return `RR-2026-${random}`;
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert(`जय श्री राम! Registration Successful for ${formData.name}`);
-        // Here you would integrate with backend or WhatsApp API
+        setLoading(true);
+        setError('');
+
+        // Validation
+        if (!formData.name || !formData.phone || !formData.password) {
+            setError('कृपया सभी आवश्यक फ़ील्ड भरें।');
+            setLoading(false);
+            return;
+        }
+
+        if (formData.phone.length !== 10) {
+            setError('कृपया 10 अंकों का मोबाइल नंबर दर्ज करें।');
+            setLoading(false);
+            return;
+        }
+
+        if (formData.password.length < 4) {
+            setError('पासवर्ड कम से कम 4 अक्षर का होना चाहिए।');
+            setLoading(false);
+            return;
+        }
+
+        const newMemberId = generateMemberId();
+
+        try {
+            // Check if phone already exists
+            const { data: existingUser } = await supabase
+                .from('registrations')
+                .select('phone')
+                .eq('phone', formData.phone)
+                .single();
+
+            if (existingUser) {
+                setError('यह मोबाइल नंबर पहले से पंजीकृत है। कृपया लॉगिन करें।');
+                setLoading(false);
+                return;
+            }
+
+            // Insert new registration
+            const { data, error: insertError } = await supabase
+                .from('registrations')
+                .insert([{
+                    name: formData.name,
+                    phone: formData.phone,
+                    gotra: formData.gotra || null,
+                    family_members: parseInt(formData.familyMembers) || 1,
+                    city: formData.city || null,
+                    state: formData.state || null,
+                    password: formData.password,
+                    payment_status: 'pending',
+                    member_id: newMemberId,
+                    prasad: formData.prasad
+                }])
+                .select()
+                .single();
+
+            if (insertError) {
+                console.error('Supabase Error:', insertError);
+                throw insertError;
+            }
+
+            // Success
+            setMemberData({
+                ...formData,
+                member_id: data?.member_id || newMemberId
+            });
+            setSuccess(true);
+
+            // Store login session
+            localStorage.setItem('userPhone', formData.phone);
+
+        } catch (err) {
+            console.error('Registration Error:', err);
+            setError(`पंजीकरण विफल: ${err.message || 'कृपया पुनः प्रयास करें।'}`);
+        } finally {
+            setLoading(false);
+        }
     };
 
+    // Success Screen
+    if (success && memberData) {
+        return (
+            <div className="participate-page">
+                <div className="success-hero">
+                    <div className="success-content">
+                        <div className="success-icon">✅</div>
+                        <h1>॥ जय श्री राम ॥</h1>
+                        <h2>आपका पंजीकरण सफल हुआ!</h2>
+
+                        <div className="member-card">
+                            <div className="member-header">
+                                <span className="member-label">Member ID</span>
+                                <span className="member-id">{memberData.member_id}</span>
+                            </div>
+                            <div className="member-details">
+                                <p><strong>नाम:</strong> {memberData.name}</p>
+                                <p><strong>मोबाइल:</strong> {memberData.phone}</p>
+                                <p><strong>शहर:</strong> {memberData.city || '-'}</p>
+                            </div>
+                        </div>
+
+                        <div className="success-message">
+                            <p>🙏 आपका विवरण सुरक्षित सुरक्षित कर लिया गया है।</p>
+                            <p>📱 अब आप अपने <strong>Mobile Number</strong> और <strong>Password</strong> से Login कर सकते हैं।</p>
+                        </div>
+
+                        <div className="success-actions">
+                            <a href="/login" className="btn-primary">
+                                🔑 लॉगिन करें
+                            </a>
+                            <a href="/sankalp" className="btn-secondary">
+                                📜 संकल्प पत्र बनाएं
+                            </a>
+                            <button onClick={() => window.location.reload()} className="btn-outline">
+                                ➕ नया पंजीकरण करें
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    // Registration Form
     return (
-        <div className="page-container container">
-            <h1 className="page-title text-center">यज्ञ सहभागिता पंजीकरण</h1>
+        <div className="participate-page">
+            {/* Hero */}
+            <div className="participate-hero">
+                <div className="hero-overlay"></div>
+                <div className="hero-content">
+                    <h1>॥ यज्ञ में सहभागिता ॥</h1>
+                    <p>अपना विवरण भरें और राष्ट्र निर्माण में भागीदार बनें</p>
+                </div>
+            </div>
 
-            <div className="form-wrapper">
-                <form onSubmit={handleSubmit} className="participation-form">
-                    <div className="form-group">
-                        <label>पूरा नाम (Full Name)</label>
-                        <input
-                            type="text"
-                            name="name"
-                            required
-                            placeholder="Ex: Amit Sharma"
-                            value={formData.name}
-                            onChange={handleChange}
-                        />
-                    </div>
+            <div className="container participate-content">
+                <div className="form-card">
+                    <form className="participate-form" onSubmit={handleSubmit}>
+                        {error && (
+                            <div className="error-box">
+                                ❌ {error}
+                            </div>
+                        )}
 
-                    <div className="form-group">
-                        <label>मोबाइल नंबर (Mobile Number)</label>
-                        <input
-                            type="tel"
-                            name="phone"
-                            required
-                            placeholder="Ex: 9876543210"
-                            value={formData.phone}
-                            onChange={handleChange}
-                        />
-                    </div>
-
-                    <div className="form-row">
                         <div className="form-group">
-                            <label>गोत्र (Gotra)</label>
+                            <label>पूरा नाम (Full Name) *</label>
                             <input
                                 type="text"
-                                name="gotra"
-                                placeholder="Optional"
-                                value={formData.gotra}
+                                name="name"
+                                value={formData.name}
                                 onChange={handleChange}
+                                required
+                                placeholder="श्री राम कुमार"
                             />
                         </div>
+
                         <div className="form-group">
-                            <label>सदस्य संख्या (Family Members)</label>
+                            <label>मोबाइल नंबर (Mobile Number) *</label>
                             <input
-                                type="number"
-                                name="familyMembers"
-                                min="1"
-                                value={formData.familyMembers}
+                                type="tel"
+                                name="phone"
+                                value={formData.phone}
                                 onChange={handleChange}
+                                required
+                                placeholder="9876543210"
+                                maxLength="10"
+                                pattern="[0-9]{10}"
                             />
                         </div>
-                    </div>
 
-                    <div className="form-group">
-                        <label>शहर / राज्य (City & State)</label>
-                        <input
-                            type="text"
-                            name="city"
-                            required
-                            placeholder="Ex: Ayodhya, UP"
-                            value={formData.city}
-                            onChange={handleChange}
-                        />
-                    </div>
+                        <div className="form-row">
+                            <div className="form-group">
+                                <label>शहर (City) *</label>
+                                <input
+                                    type="text"
+                                    name="city"
+                                    value={formData.city}
+                                    onChange={handleChange}
+                                    required
+                                    placeholder="Ayodhya"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>राज्य (State)</label>
+                                <input
+                                    type="text"
+                                    name="state"
+                                    value={formData.state}
+                                    onChange={handleChange}
+                                    placeholder="Uttar Pradesh"
+                                />
+                            </div>
+                        </div>
 
-                    <div className="checkbox-group">
-                        <input type="checkbox" id="prasad" />
-                        <label htmlFor="prasad">मुझे ई-प्रसाद (E-Prasad) चाहिए</label>
-                    </div>
+                        <div className="form-row">
+                            <div className="form-group">
+                                <label>गोत्र (Gotra)</label>
+                                <input
+                                    type="text"
+                                    name="gotra"
+                                    value={formData.gotra}
+                                    onChange={handleChange}
+                                    placeholder="वशिष्ठ, भारद्वाज..."
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>परिवार के सदस्य</label>
+                                <input
+                                    type="number"
+                                    name="familyMembers"
+                                    value={formData.familyMembers}
+                                    onChange={handleChange}
+                                    min="1"
+                                    placeholder="4"
+                                />
+                            </div>
+                        </div>
 
-                    <button type="submit" className="btn-primary full-width">पंजीकरण करें (Register Now)</button>
-                </form>
+                        <div className="form-group password-group">
+                            <label>🔐 सुरक्षा पासवर्ड (Create Password) *</label>
+                            <input
+                                type="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                required
+                                placeholder="कम से कम 4 अक्षर"
+                                minLength="4"
+                            />
+                            <small>इस पासवर्ड का उपयोग लॉगिन करने के लिए किया जाएगा।</small>
+                        </div>
+
+                        <div className="form-group checkbox-group">
+                            <input
+                                type="checkbox"
+                                name="prasad"
+                                checked={formData.prasad}
+                                onChange={handleChange}
+                                id="prasad"
+                            />
+                            <label htmlFor="prasad">क्या आप डाक द्वारा महाप्रसाद मंगवाना चाहते हैं?</label>
+                        </div>
+
+                        <button type="submit" className="btn-submit" disabled={loading}>
+                            {loading ? '⏳ प्रोसेसिंग...' : '🙏 पंजीकरण करें (Register Now)'}
+                        </button>
+
+                        <p className="login-link">
+                            पहले से पंजीकृत हैं? <a href="/login">यहाँ लॉगिन करें</a>
+                        </p>
+                    </form>
+                </div>
             </div>
         </div>
     );

@@ -20,6 +20,7 @@ const Footer = () => {
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li><a href="/about">About Yagya</a></li>
+                        <li><a href="/organizers">Organizers / आयोजक</a></li>
                         <li><a href="/sankalp">Sankalp</a></li>
                         <li><a href="/donate">Donate</a></li>
                         <li><a href="/guide">Help / गाइड</a></li>
@@ -28,9 +29,9 @@ const Footer = () => {
 
                 <div className="footer-section">
                     <h4>Contact Us</h4>
-                    <p><FaMapMarkerAlt /> सराय तट, श्री राम जन्मभूमि, अयोध्या धाम</p>
-                    <p><FaPhone /> +91 9990359801</p>
-                    <p><FaPhone /> +91 9455898365</p>
+                    <p><FaMapMarkerAlt /> यज्ञ स्थल: शरयू तट, श्री राम जन्म भूमि, अयोध्या धाम, उ.प्र.</p>
+                    <p><FaPhone /> +91 9990359801, +91 9415101622</p>
+                    <p><FaPhone /> +91 7710977805</p>
                 </div>
             </div>
             <div className="footer-bottom">

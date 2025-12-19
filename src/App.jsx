@@ -12,6 +12,9 @@ import Contact from './pages/Contact';
 import HindiGuide from './pages/HindiGuide';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
+import UserLogin from './pages/UserLogin';
+import UserDashboard from './pages/UserDashboard';
+import Organizers from './pages/Organizers';
 
 // Placeholder components for routes not yet implemented
 const Placeholder = ({ title }) => (
@@ -29,14 +32,17 @@ function App() {
         <Route path="about" element={<Details />} />
         <Route path="sankalp" element={<Sankalp />} />
         <Route path="adhyaksh" element={<Adhyaksh />} />
+        <Route path="organizers" element={<Organizers />} />
         <Route path="participate" element={<Participate />} />
         <Route path="donate" element={<Donate />} />
         <Route path="gallery" element={<Media />} />
         <Route path="contact" element={<Contact />} />
         <Route path="guide" element={<HindiGuide />} />
-        <Route path="admin" element={<AdminLogin />} />
-        <Route path="admin/dashboard" element={<AdminDashboard />} />
+        <Route path="login" element={<UserLogin />} />
+        <Route path="profile" element={<UserDashboard />} />
       </Route>
+      <Route path="/admin" element={<AdminLogin />} />
+      <Route path="/admin/dashboard" element={<AdminDashboard />} />
     </Routes>
   );
 }

@@ -1,11 +1,13 @@
 .header {
     background-color: var(--sacred-white);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(to bottom, #fffaf0, #fff8e1);
+    box-shadow: 0 4px 20px rgba(62, 39, 35, 0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 1rem 0;
+    padding: 0.8rem 0;
     border-bottom: 3px solid var(--gold);
+    border-top: 5px solid var(--saffron);
 }
 
 .header-container {
@@ -14,39 +16,73 @@
     align-items: center;
 }
 
+.logo {
+    flex-shrink: 0;
+    margin-right: 20px;
+}
+
 .logo a {
     text-decoration: none;
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: rotate(360deg);
+}
+
+.logo-text {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: center;
+    min-width: 140px;
+    /* Ensure text has minimum space */
 }
 
 .logo h1 {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     margin: 0;
-    line-height: 1;
+    line-height: 1.1;
     color: var(--deep-orange);
+    font-weight: 700;
+    white-space: nowrap;
 }
 
 .logo span {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-dark);
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    line-height: 1.2;
 }
 
 .nav-menu ul {
     display: flex;
-    gap: 2rem;
+    gap: 1.2rem;
     margin: 0;
     padding: 0;
+    align-items: center;
 }
 
 .nav-menu a {
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text-dark);
-    font-size: 1.1rem;
+    font-size: 0.95rem;
+    /* Slightly smaller for better fit */
     position: relative;
+    white-space: nowrap;
 }
 
 .nav-menu a:hover {
@@ -66,6 +102,25 @@
 
 .nav-menu a:hover::after {
     width: 100%;
+}
+
+.login-link-nav {
+    color: var(--deep-orange) !important;
+    font-weight: 600 !important;
+    border: 1px solid var(--deep-orange);
+    padding: 5px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.login-link-nav:hover {
+    background-color: var(--deep-orange);
+    color: white !important;
+}
+
+.login-link-nav::after {
+    display: none;
+    /* No underline for button-like link */
 }
 
 .header-actions {

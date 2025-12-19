@@ -1,0 +1,289 @@
+/* ===== ORGANIZERS PAGE - PREMIUM SANATAN STYLING ===== */
+
+.organizers-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FFF8F0 0%, #FFF5E6 100%);
+}
+
+/* ===== Hero Section ===== */
+.organizers-hero {
+    background: linear-gradient(135deg, #8B2500 0%, #C73E2C 50%, #8B2500 100%);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.organizers-hero .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFD700' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.organizers-hero .hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.organizers-hero h1 {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 3rem;
+    color: #FFD700;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1rem;
+}
+
+.organizers-hero .hero-subtitle {
+    font-size: 1.2rem;
+    color: #FFF8F0;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.95;
+}
+
+/* ===== Section Titles ===== */
+.section-title {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 2rem;
+    color: #8B2500;
+    text-align: center;
+    margin: 3rem 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.title-decorator {
+    color: #FFD700;
+    font-size: 1.5rem;
+}
+
+/* ===== Key Organizers Grid ===== */
+.key-organizers-section {
+    padding: 2rem 0;
+}
+
+.key-organizers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.key-organizer-card {
+    background: linear-gradient(135deg, #FFFAF5, #FFF5EB);
+    border: 2px solid #E8D5C4;
+    border-radius: 15px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(139, 37, 0, 0.1);
+}
+
+.key-organizer-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #FFD700, #FF6B00, #FFD700);
+}
+
+.key-organizer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(139, 37, 0, 0.2);
+    border-color: #FFD700;
+}
+
+.key-organizer-card .card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.key-organizer-card h3 {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 1.1rem;
+    color: #5D3A1A;
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
+
+.key-organizer-card .org-role {
+    color: #C73E2C;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.key-organizer-card .org-phone {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* ===== All Organizers List ===== */
+.all-organizers-section {
+    padding: 2rem 0 3rem;
+}
+
+.organizers-list-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: linear-gradient(135deg, #FFFCF8, #FFF8F0);
+    border: 2px solid #E8D5C4;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(139, 37, 0, 0.1);
+}
+
+.organizers-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.organizer-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    background: white;
+    border-radius: 8px;
+    border-left: 3px solid #FFD700;
+    transition: all 0.2s ease;
+}
+
+.organizer-item:hover {
+    background: #FFF5EB;
+    transform: translateX(5px);
+    border-left-color: #FF6B00;
+}
+
+.organizer-item .bullet {
+    color: #C73E2C;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.organizer-item .name {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    color: #5D3A1A;
+    font-size: 1rem;
+}
+
+/* ===== Featured Section ===== */
+.featured-section {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.featured-name {
+    display: inline-block;
+    background: linear-gradient(135deg, #8B2500, #C73E2C);
+    padding: 2rem 4rem;
+    border-radius: 15px;
+    position: relative;
+}
+
+.featured-name::before,
+.featured-name::after {
+    content: '॥';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FFD700;
+    font-size: 2rem;
+}
+
+.featured-name::before {
+    left: 1rem;
+}
+
+.featured-name::after {
+    right: 1rem;
+}
+
+.featured-name .featured-label {
+    display: block;
+    color: #FFD700;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+.featured-name h2 {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 2.5rem;
+    color: #FFF8F0;
+    margin: 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Support Message ===== */
+.support-message {
+    padding: 2rem 0 4rem;
+    text-align: center;
+}
+
+.message-box {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: linear-gradient(135deg, #FFF8F0, #FFFCF8);
+    border: 2px dashed #E8D5C4;
+    border-radius: 15px;
+}
+
+.message-box .om-symbol {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.message-box p {
+    color: #5D3A1A;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.message-box .blessing {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    color: #C73E2C;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .organizers-hero h1 {
+        font-size: 2rem;
+    }
+
+    .organizers-list-container {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+    }
+
+    .featured-name {
+        padding: 1.5rem 3rem;
+    }
+
+    .featured-name h2 {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+}

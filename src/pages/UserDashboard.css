@@ -1,0 +1,1165 @@
+/* ============================================
+   User Dashboard - Professional Sanatan Theme
+   ============================================ */
+
+/* Loading Screen */
+.loading-screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+    gap: 20px;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #FFD700;
+    border-top-color: #C73E2C;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Main Dashboard */
+.user-dashboard {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #FFF8E1 0%, #FFFDE7 50%, #FFF8E1 100%);
+}
+
+/* Hero Header */
+.dashboard-hero {
+    background: linear-gradient(135deg, #C73E2C 0%, #E64A19 50%, #FF8F00 100%);
+    padding: 40px 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-pattern {
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.user-welcome {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #FFD700, #FF8F00);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #C73E2C;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 3px solid #fff;
+}
+
+.welcome-text h1 {
+    color: #fff;
+    font-size: 1.8rem;
+    margin: 0 0 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-text p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-size: 1rem;
+}
+
+.welcome-text strong {
+    color: #FFD700;
+    font-weight: 700;
+}
+
+.logout-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+/* Stats Strip */
+.stats-strip {
+    max-width: 1200px;
+    margin: -30px auto 30px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.stat-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(199, 62, 44, 0.15);
+}
+
+.stat-icon {
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #FFF8E1, #FFECB3);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.stat-value {
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.stat-value.status-verified {
+    color: #2E7D32;
+}
+
+.stat-value.status-pending {
+    color: #F57C00;
+}
+
+/* Dashboard Tabs */
+.dashboard-tabs {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 0 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.dashboard-tabs button {
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    padding: 12px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #666;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dashboard-tabs button:hover {
+    border-color: #C73E2C;
+    color: #C73E2C;
+}
+
+.dashboard-tabs button.active {
+    background: linear-gradient(135deg, #C73E2C, #E64A19);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(199, 62, 44, 0.3);
+}
+
+/* Dashboard Content */
+.dashboard-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+}
+
+.tab-panel {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Overview Panel */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.info-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.info-card h3 {
+    color: #C73E2C;
+    font-size: 1.2rem;
+    margin: 0 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #FFD700;
+}
+
+.info-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dotted #eee;
+}
+
+.info-row span {
+    color: #666;
+}
+
+.info-row strong {
+    color: #333;
+}
+
+.status-display {
+    text-align: center;
+    padding: 20px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.status-badge.large {
+    font-size: 1.2rem;
+    padding: 15px 35px;
+}
+
+.status-badge.verified {
+    background: #E8F5E9;
+    color: #2E7D32;
+}
+
+.status-badge.pending {
+    background: #FFF3E0;
+    color: #E65100;
+}
+
+.status-note {
+    color: #666;
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+.txn-info {
+    background: #f5f5f5;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.txn-info code {
+    font-weight: 600;
+    color: #C73E2C;
+}
+
+.donate-cta {
+    display: inline-block;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #2E7D32, #43A047);
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.donate-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(46, 125, 50, 0.3);
+}
+
+/* Quick Actions */
+.quick-actions {
+    background: #fff;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.quick-actions h3 {
+    color: #333;
+    margin: 0 0 20px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    background: linear-gradient(135deg, #C73E2C, #E64A19);
+    color: #fff;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(199, 62, 44, 0.3);
+}
+
+.action-btn.secondary {
+    background: linear-gradient(135deg, #FF8F00, #FFB300);
+}
+
+.action-btn.donate {
+    background: linear-gradient(135deg, #2E7D32, #43A047);
+}
+
+/* Donations Panel */
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.panel-header h2 {
+    color: #333;
+    margin: 0;
+}
+
+.btn-new-donation {
+    background: linear-gradient(135deg, #2E7D32, #43A047);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-new-donation:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(46, 125, 50, 0.3);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.empty-state h3 {
+    color: #333;
+    margin: 0 0 10px;
+}
+
+.empty-state p {
+    color: #666;
+    margin: 0 0 25px;
+}
+
+.btn-donate {
+    display: inline-block;
+    background: linear-gradient(135deg, #C73E2C, #E64A19);
+    color: #fff;
+    padding: 14px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-donate:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(199, 62, 44, 0.3);
+}
+
+.donations-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.summary-card {
+    background: linear-gradient(135deg, #C73E2C, #E64A19);
+    color: #fff;
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.summary-card span {
+    display: block;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+.summary-card strong {
+    font-size: 1.8rem;
+}
+
+.donations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.donation-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid #2E7D32;
+    flex-wrap: wrap;
+}
+
+.donation-amount {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #2E7D32;
+}
+
+.donation-meta {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.donation-date {
+    color: #666;
+}
+
+.donation-status {
+    font-weight: 600;
+}
+
+.donation-status.verified {
+    color: #2E7D32;
+}
+
+.donation-status.pending {
+    color: #F57C00;
+}
+
+.donation-txn {
+    font-size: 0.85rem;
+    color: #999;
+    margin-top: 5px;
+}
+
+.donation-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-print,
+.btn-download {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.btn-print {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.btn-print:hover {
+    background: #e0e0e0;
+}
+
+.btn-download {
+    background: linear-gradient(135deg, #C73E2C, #E64A19);
+    color: #fff;
+}
+
+.btn-download:hover {
+    transform: translateY(-2px);
+}
+
+/* Downloads Panel */
+.downloads-panel h2 {
+    color: #333;
+    margin: 0 0 10px;
+}
+
+.downloads-info {
+    color: #666;
+    margin: 0 0 30px;
+}
+
+.download-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.download-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 2px solid transparent;
+    transition: all 0.3s;
+}
+
+.download-card:hover {
+    border-color: #FFD700;
+    transform: translateY(-5px);
+}
+
+.download-card.featured {
+    background: linear-gradient(135deg, #FFF8E1, #FFECB3);
+    border-color: #FFD700;
+}
+
+.download-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.download-card h3 {
+    color: #333;
+    margin: 0 0 10px;
+    font-size: 1.3rem;
+}
+
+.download-card p {
+    color: #666;
+    margin: 0 0 25px;
+}
+
+.btn-download-main {
+    background: linear-gradient(135deg, #C73E2C, #E64A19);
+    color: #fff;
+    border: none;
+    padding: 14px 35px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-download-main:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(199, 62, 44, 0.3);
+}
+
+/* ============================================
+   Hidden Templates for PDF Generation
+   ============================================ */
+
+/* ID Card Template */
+.id-card-template {
+    width: 324px;
+    height: 204px;
+    padding: 0;
+}
+
+.id-card {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #FFF8E1, #FFFDE7);
+    border: 3px solid #C73E2C;
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.id-header {
+    background: linear-gradient(135deg, #C73E2C, #E64A19);
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.id-logo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.id-title h2 {
+    color: #fff;
+    font-size: 14px;
+    margin: 0;
+}
+
+.id-title span {
+    color: #FFD700;
+    font-size: 10px;
+}
+
+.id-body {
+    padding: 12px 15px;
+    display: flex;
+    gap: 12px;
+}
+
+.id-photo {
+    width: 60px;
+    height: 70px;
+    background: linear-gradient(135deg, #FFD700, #FF8F00);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #C73E2C;
+}
+
+.id-photo .om {
+    font-size: 2rem;
+    color: #C73E2C;
+}
+
+.id-details h3 {
+    color: #C73E2C;
+    font-size: 14px;
+    margin: 0 0 2px;
+}
+
+.id-details .role {
+    color: #666;
+    font-size: 10px;
+    margin: 0 0 8px;
+}
+
+.id-details .id-row {
+    font-size: 10px;
+    color: #333;
+    margin: 3px 0;
+}
+
+.id-details .id-row span {
+    color: #666;
+}
+
+.id-footer {
+    background: linear-gradient(135deg, #C73E2C, #E64A19);
+    color: #FFD700;
+    text-align: center;
+    padding: 6px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* Sankalp Patra Template - A4 Landscape */
+.sankalp-template {
+    width: 1123px;
+    /* A4 Landscape at 96dpi */
+    height: 794px;
+}
+
+.sankalp-patra {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 50%, #FFF8E1 100%);
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Nirmala UI', sans-serif;
+}
+
+.sankalp-border {
+    width: 100%;
+    height: 100%;
+    border: 4px double #C73E2C;
+    border-radius: 8px;
+    padding: 25px;
+    position: relative;
+    background: linear-gradient(180deg,
+            rgba(255, 215, 0, 0.1) 0%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(255, 215, 0, 0.1) 100%);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Corner Decorations */
+.corner {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 3px solid #FFD700;
+}
+
+.corner.top-left {
+    top: 10px;
+    left: 10px;
+    border-right: none;
+    border-bottom: none;
+    border-top-left-radius: 10px;
+}
+
+.corner.top-right {
+    top: 10px;
+    right: 10px;
+    border-left: none;
+    border-bottom: none;
+    border-top-right-radius: 10px;
+}
+
+.corner.bottom-left {
+    bottom: 10px;
+    left: 10px;
+    border-right: none;
+    border-top: none;
+    border-bottom-left-radius: 10px;
+}
+
+.corner.bottom-right {
+    bottom: 10px;
+    right: 10px;
+    border-left: none;
+    border-top: none;
+    border-bottom-right-radius: 10px;
+}
+
+.sankalp-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #FFD700;
+}
+
+.om-left,
+.om-right {
+    font-size: 3rem;
+    color: #C73E2C;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-center {
+    text-align: center;
+}
+
+.sankalp-logo {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+}
+
+.sankalp-header h1 {
+    color: #C73E2C;
+    font-size: 1.8rem;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.sankalp-header h2 {
+    color: #FF8F00;
+    font-size: 1.4rem;
+    margin: 5px 0;
+    font-weight: 600;
+}
+
+.sankalp-header .subtitle {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.sankalp-body {
+    padding: 0 40px;
+}
+
+.sankalp-body .shloka {
+    text-align: center;
+    color: #8B4513;
+    font-style: italic;
+    font-size: 0.95rem;
+    margin: 0 0 20px;
+    line-height: 1.6;
+}
+
+.pledge-intro {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #C73E2C;
+}
+
+.pledge-intro p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.pledge-intro .highlight {
+    color: #C73E2C;
+    font-weight: 700;
+}
+
+.pledge-points {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.pledge-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 12px 15px;
+    border-radius: 8px;
+}
+
+.pledge-item .number {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, #C73E2C, #E64A19);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.pledge-item p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.sankalp-body .prayer {
+    text-align: center;
+    color: #C73E2C;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.sankalp-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 2px dashed #FFD700;
+}
+
+.footer-left p,
+.footer-center p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.signature-box {
+    text-align: center;
+    min-width: 180px;
+}
+
+.sign-name {
+    border-bottom: 2px solid #333;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 1.3rem;
+    color: #333;
+}
+
+.signature-box span {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.sankalp-bottom {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.sankalp-bottom p {
+    color: #C73E2C;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Receipt Template Styles */
+.receipt-template .receipt {
+    width: 350px;
+    background: #fff;
+    border: 2px solid #C73E2C;
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.receipt-header {
+    background: linear-gradient(135deg, #C73E2C, #E64A19);
+    padding: 20px;
+    text-align: center;
+}
+
+.receipt-header img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.receipt-header h2 {
+    color: #fff;
+    margin: 0 0 5px;
+    font-size: 1.1rem;
+}
+
+.receipt-header p {
+    color: #FFD700;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.receipt-body {
+    padding: 20px;
+}
+
+.receipt-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dotted #ddd;
+}
+
+.receipt-row span {
+    color: #666;
+}
+
+.receipt-row strong {
+    color: #333;
+}
+
+.receipt-amount {
+    background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+    text-align: center;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2E7D32;
+}
+
+.receipt-footer {
+    background: #f9f9f9;
+    padding: 15px;
+    text-align: center;
+    border-top: 2px dashed #FFD700;
+}
+
+.receipt-footer p {
+    margin: 5px 0;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.receipt-footer p:first-child {
+    color: #C73E2C;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-hero {
+        padding: 30px 20px;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .user-welcome {
+        flex-direction: column;
+    }
+
+    .welcome-text h1 {
+        font-size: 1.4rem;
+    }
+
+    .stats-strip {
+        margin-top: -20px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+    }
+
+    .dashboard-tabs {
+        justify-content: center;
+    }
+
+    .dashboard-tabs button {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .action-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .donation-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .donation-actions {
+        width: 100%;
+        justify-content: stretch;
+    }
+
+    .btn-print,
+    .btn-download {
+        flex: 1;
+    }
+
+    .download-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-new-donation {
+        width: 100%;
+        text-align: center;
+    }
+}

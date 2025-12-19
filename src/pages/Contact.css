@@ -1,65 +1,363 @@
+/* ===== CONTACT PAGE - PREMIUM SANATAN STYLING ===== */
+
+.contact-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FFF8F0 0%, #FFF5E6 100%);
+}
+
+/* Hero Section */
+.contact-hero {
+    background: linear-gradient(135deg, #8B2500 0%, #C73E2C 50%, #8B2500 100%);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-hero .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFD700' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.contact-hero .hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-hero h1 {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 2.8rem;
+    color: #FFD700;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0.5rem;
+}
+
+.contact-hero p {
+    font-size: 1.1rem;
+    color: #FFF8F0;
+    opacity: 0.95;
+}
+
+.contact-content {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Contact Grid */
 .contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    margin-bottom: 4rem;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+/* Info Cards */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
 }
 
 .info-card {
-    background: white;
-    padding: 2rem;
+    background: linear-gradient(135deg, #FFFCF8, #FFF8F0);
+    padding: 1.5rem;
     border-radius: 15px;
-    margin-bottom: 2rem;
-    box-shadow: var(--shadow-card);
-    text-align: center;
-    border-bottom: 4px solid var(--saffron);
+    box-shadow: 0 5px 20px rgba(139, 37, 0, 0.08);
+    border: 1px solid #E8D5C4;
+    transition: all 0.3s ease;
 }
 
-.info-card .icon {
+.info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(139, 37, 0, 0.12);
+}
+
+.card-icon {
     font-size: 2rem;
-    color: var(--deep-orange);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
-.contact-form-section {
-    background: var(--bg-cream);
-    padding: 2.5rem;
-    border-radius: 20px;
+.info-card h3 {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    color: #5D3A1A;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
 }
 
-.contact-form-section h3 {
-    margin-bottom: 1.5rem;
-    color: var(--text-dark);
+.info-card p {
+    color: #8B7355;
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
-.form-input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+/* Contact Persons */
+.contact-persons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.textarea {
-    height: 120px;
-    resize: vertical;
+.person {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px dashed #E8D5C4;
 }
 
-.map-section {
-    height: 300px;
-    background: #eee;
-    border-radius: 15px;
-    overflow: hidden;
+.person:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.person strong {
+    color: #5D3A1A;
+    font-size: 0.95rem;
+}
+
+.person .role {
+    color: #C73E2C;
+    font-size: 0.85rem;
+}
+
+.phone-link {
+    color: #5D3A1A;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.phone-link:hover {
+    color: #C73E2C;
+}
+
+/* Email Card */
+.email-card {
+    background: linear-gradient(135deg, #FFF8E1, #FFFDE7) !important;
+    border-color: #FFD700 !important;
+}
+
+.email-link {
+    color: #C73E2C;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    word-break: break-all;
+}
+
+.email-link:hover {
+    text-decoration: underline;
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #888;
-    font-size: 1.5rem;
-    border: 1px solid #ddd;
+    gap: 10px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-@media (max-width: 768px) {
+.whatsapp-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+    color: white;
+}
+
+.whatsapp-btn svg {
+    font-size: 1.5rem;
+}
+
+/* Contact Form Section */
+.contact-form-section {
+    background: linear-gradient(135deg, #FFFCF8, #FFF8F0);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(139, 37, 0, 0.1);
+    border: 2px solid #E8D5C4;
+    position: relative;
+}
+
+.contact-form-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #FFD700, #FF6B00, #C73E2C, #FF6B00, #FFD700);
+    border-radius: 20px 20px 0 0;
+}
+
+.contact-form-section h3 {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    color: #5D3A1A;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.form-subtitle {
+    text-align: center;
+    color: #8B7355;
+    margin-bottom: 2rem;
+}
+
+/* Success/Error Messages */
+.success-msg {
+    background: #E8F5E9;
+    color: #2E7D32;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #A5D6A7;
+    text-align: center;
+}
+
+.error-msg {
+    background: #FFEBEE;
+    color: #C62828;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #EF9A9A;
+    text-align: center;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    color: #5D3A1A;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #E8D5C4;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #FFD700;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Submit Button */
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #C73E2C, #8B2500);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.btn-submit:hover:not(:disabled) {
+    background: linear-gradient(135deg, #FF6B00, #C73E2C);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(199, 62, 44, 0.4);
+}
+
+.btn-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.form-note {
+    text-align: center;
+    color: #8B7355;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+/* Map Section */
+.map-section {
+    margin-top: 2rem;
+}
+
+.map-section h3 {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    color: #5D3A1A;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.map-container {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(139, 37, 0, 0.1);
+    border: 2px solid #E8D5C4;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
     .contact-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-hero h1 {
+        font-size: 2rem;
+    }
+
+    .contact-form-section {
+        padding: 1.5rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .info-card {
+        padding: 1.25rem;
     }
 }

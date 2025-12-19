@@ -1,25 +1,32 @@
 :root {
-  /* Colors */
-  --saffron: #FF9933;
-  --deep-orange: #FF5733;
-  --gold: #FFD700;
-  --temple-stone: #D4AF37;
-  --sacred-white: #FFFDD0;
-  --bg-cream: #FFF8E7;
-  --text-dark: #2C1810; /* Dark brown for warmth */
-  --text-light: #FFFDD0;
+    /* Sanatan Theme Colors */
+    --saffron: #FF9933;
+    /* Main Bhagwa */
+    --deep-orange: #E65100;
+    /* Darker Rich Bhagwa */
+    --gold: #FFD700;
+    /* Bright Gold */
+    --sacred-red: #B71C1C;
+    /* Deep Red (Roli/Mauli) */
+    --bg-cream: #FFF8E1;
+    /* Light Sand */
+    --sacred-white: #FFFFFF;
+    --text-dark: #3E2723;
+    /* Dark Wood */
+    --text-light: #4E342E;
+    /* Brown */
 
-  /* Fonts */
-  --font-heading: 'Rozha One', serif;
-  --font-body: 'Poppins', sans-serif;
+    /* Fonts */
+    --font-heading: 'Rozha One', serif;
+    --font-body: 'Poppins', sans-serif;
 
-  /* Spacing */
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 4rem;
-  
-  /* Shadows */
-  --shadow-card: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-gold: 0 0 15px rgba(255, 215, 0, 0.3);
+    /* Spacing */
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 32px;
+    --spacing-xl: 64px;
+
+    /* Shadows */
+    --shadow-gold: 0 4px 20px rgba(255, 215, 0, 0.5);
+    --shadow-card: 0 10px 30px rgba(62, 39, 35, 0.15);
 }

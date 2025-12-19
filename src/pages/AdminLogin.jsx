@@ -1,59 +1,85 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Admin.css';
+import { supabase } from '../supabaseClient';
 
 const AdminLogin = () => {
-    const [credentials, setCredentials] = useState({ username: '', password: '' });
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
-    const handleChange = (e) => {
-        setCredentials({ ...credentials, [e.target.name]: e.target.value });
-    };
-
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        if (credentials.username === 'admin' && credentials.password === 'ram123') {
-            localStorage.setItem('isAdmin', 'true');
-            navigate('/admin/dashboard');
-        } else {
-            setError('Invalid Username or Password (Try: admin / ram123)');
+        setError('');
+        setLoading(true);
+
+        try {
+            // Fetch credentials from database
+            const { data, error: fetchError } = await supabase
+                .from('settings')
+                .select('key, value')
+                .in('key', ['admin_username', 'admin_password']);
+
+            let savedUsername = 'admin';
+            let savedPassword = 'ramrajya2026';
+
+            if (!fetchError && data && data.length > 0) {
+                data.forEach(item => {
+                    if (item.key === 'admin_username') savedUsername = item.value;
+                    if (item.key === 'admin_password') savedPassword = item.value;
+                });
+            }
+
+            // Verify credentials
+            if (username === savedUsername && password === savedPassword) {
+                localStorage.setItem('adminUser', savedUsername);
+                navigate('/admin/dashboard');
+            } else {
+                setError('Invalid username or password! कृपया सही जानकारी दर्ज करें।');
+            }
+        } catch (err) {
+            console.error('Login error:', err);
+            setError('Login failed. Please try again.');
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
         <div className="admin-login-container">
             <div className="login-box">
-                <h2>Admin Login</h2>
-                <p>Vishva Ka Pratham Shri Ram Rajya Mahayagya</p>
+                <h2>Admin Panel</h2>
+                <p>श्री राम राज्य महायज्ञ - प्रशासन लॉगिन</p>
+
+                {error && <div className="error-msg">{error}</div>}
 
                 <form onSubmit={handleLogin}>
                     <div className="form-group">
+                        <label>Username / उपयोगकर्ता नाम</label>
                         <input
                             type="text"
-                            name="username"
-                            placeholder="Username"
-                            value={credentials.username}
-                            onChange={handleChange}
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            placeholder="Enter username"
                             required
                         />
                     </div>
                     <div className="form-group">
+                        <label>Password / पासवर्ड</label>
                         <input
                             type="password"
-                            name="password"
-                            placeholder="Password"
-                            value={credentials.password}
-                            onChange={handleChange}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Enter password"
                             required
                         />
                     </div>
-                    {error && <p className="error-msg">{error}</p>}
-                    <button type="submit" className="btn-primary full-width">Login</button>
+                    <button type="submit" className="login-btn" disabled={loading}>
+                        {loading ? 'Verifying...' : 'Login / प्रवेश करें'}
+                    </button>
                 </form>
-                <div className="demo-hint">
-                    <small>Demo: User=admin, Pass=ram123</small>
-                </div>
             </div>
         </div>
     );

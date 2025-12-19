@@ -1,0 +1,105 @@
+/* Sankalp Patra Styles */
+.sankalp-container {
+    width: 800px;
+    /* Landscape A4 approx width for visual consistency */
+    background: #fff;
+    padding: 20px;
+    font-family: var(--font-heading);
+    color: var(--text-dark);
+}
+
+.sankalp-border {
+    border: 5px double var(--deep-orange);
+    padding: 30px;
+    background: #fffcf5;
+    position: relative;
+}
+
+.sankalp-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sankalp-logo {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.sankalp-header h1 {
+    font-size: 2.5rem;
+    color: var(--saffron);
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.shloka {
+    text-align: center;
+    font-style: italic;
+    color: var(--deep-orange);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.pledge-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+.pledge-points {
+    margin-bottom: 30px;
+    font-family: var(--font-body);
+}
+
+.pledge-points li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.confirmation {
+    text-align: center;
+    font-weight: bold;
+    color: var(--deep-orange);
+    font-size: 1.3rem;
+    margin-top: 30px;
+}
+
+.sankalp-footer {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid var(--gold);
+    padding-top: 20px;
+}
+
+.footer-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-item .label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.footer-item .value {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.signature-block {
+    align-items: center;
+}
+
+.digital-sign {
+    font-family: 'Dancing Script', cursive;
+    /* Placeholder for handwritten font */
+    color: green;
+    border: 1px dashed green;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}

@@ -1,0 +1,563 @@
+/* ============================================
+   Global Print Styles - Clean A4 Format
+   ============================================ */
+
+@media print {
+
+    /* Page Setup - A4 */
+    @page {
+        size: A4;
+        margin: 15mm 10mm;
+    }
+
+    /* Hide non-printable elements */
+    .no-print,
+    header:not(.print-header),
+    footer:not(.print-footer),
+    nav,
+    .sidebar,
+    .dashboard-tabs,
+    .filter-bar,
+    .action-cell,
+    .logout-btn,
+    .btn-print,
+    .btn-download,
+    .action-btn,
+    .donate-cta,
+    .quick-actions,
+    button:not(.print-include),
+    a.btn,
+    .mobile-menu,
+    .header,
+    .footer {
+        display: none !important;
+    }
+
+    /* Show print-only elements */
+    .only-print,
+    .print-header,
+    .print-footer {
+        display: block !important;
+    }
+
+    /* Reset backgrounds for printing */
+    body {
+        background: white !important;
+        color: #000 !important;
+        font-family: 'Times New Roman', serif !important;
+        font-size: 12pt !important;
+        line-height: 1.5 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Main containers */
+    .page-container,
+    .dashboard-page,
+    .user-dashboard,
+    .admin-dashboard,
+    .dashboard-content,
+    .main-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: white !important;
+    }
+
+    /* Print Header */
+    .print-header {
+        text-align: center;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #C73E2C;
+        margin-bottom: 20px;
+    }
+
+    .print-header h1 {
+        font-size: 18pt !important;
+        color: #C73E2C !important;
+        margin: 0 0 5px;
+    }
+
+    .print-header h2 {
+        font-size: 14pt !important;
+        color: #333 !important;
+        margin: 0 0 5px;
+        font-weight: normal;
+    }
+
+    .print-header p {
+        font-size: 10pt !important;
+        color: #666 !important;
+        margin: 0;
+    }
+
+    /* Table Styles */
+    table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        font-size: 10pt !important;
+        page-break-inside: auto !important;
+    }
+
+    thead {
+        display: table-header-group !important;
+    }
+
+    tbody {
+        display: table-row-group !important;
+    }
+
+    tr {
+        page-break-inside: avoid !important;
+        page-break-after: auto !important;
+    }
+
+    th,
+    td {
+        border: 1px solid #333 !important;
+        padding: 8px 10px !important;
+        text-align: left !important;
+        color: #000 !important;
+        background: white !important;
+    }
+
+    th {
+        background: #f5f5f5 !important;
+        font-weight: bold !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Status Badges */
+    .status-badge {
+        padding: 3px 8px !important;
+        border-radius: 3px !important;
+        font-size: 9pt !important;
+    }
+
+    .status-badge.verified,
+    .status-badge.success {
+        background: #d4edda !important;
+        color: #155724 !important;
+        border: 1px solid #155724 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .status-badge.pending {
+        background: #fff3cd !important;
+        color: #856404 !important;
+        border: 1px solid #856404 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .status-badge.rejected {
+        background: #f8d7da !important;
+        color: #721c24 !important;
+        border: 1px solid #721c24 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Cards and Info sections */
+    .info-card,
+    .stat-card,
+    .donation-card,
+    .summary-card {
+        border: 1px solid #ccc !important;
+        padding: 10px !important;
+        margin-bottom: 10px !important;
+        page-break-inside: avoid !important;
+        background: white !important;
+        box-shadow: none !important;
+    }
+
+    /* Summary section for daily donations */
+    .donations-summary {
+        display: flex !important;
+        justify-content: space-between !important;
+        margin-bottom: 20px !important;
+        padding: 15px !important;
+        border: 2px solid #C73E2C !important;
+        background: #fff8e1 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .donations-summary .summary-item {
+        text-align: center !important;
+    }
+
+    .donations-summary .summary-item span {
+        display: block !important;
+        font-size: 10pt !important;
+        color: #666 !important;
+    }
+
+    .donations-summary .summary-item strong {
+        font-size: 14pt !important;
+        color: #C73E2C !important;
+    }
+
+    /* Print Footer */
+    .print-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 9pt;
+        color: #666;
+        padding: 10px;
+        border-top: 1px solid #ccc;
+    }
+
+    /* Links should show URL */
+    a[href]::after {
+        content: none !important;
+    }
+
+    /* Remove shadows and gradients */
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    /* Page break utilities */
+    .page-break-before {
+        page-break-before: always !important;
+    }
+
+    .page-break-after {
+        page-break-after: always !important;
+    }
+
+    .avoid-break {
+        page-break-inside: avoid !important;
+    }
+}
+
+/* ============================================
+   Donation Receipt - A4/A5 Print
+   ============================================ */
+
+@media print {
+
+    .receipt,
+    .receipt-template .receipt {
+        width: 100% !important;
+        max-width: 400px !important;
+        margin: 0 auto !important;
+        border: 2px solid #C73E2C !important;
+        padding: 0 !important;
+        background: white !important;
+        page-break-inside: avoid !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .receipt-header {
+        background: linear-gradient(135deg, #C73E2C, #E64A19) !important;
+        color: white !important;
+        padding: 20px !important;
+        text-align: center !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .receipt-header img {
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    .receipt-header h2 {
+        color: white !important;
+        font-size: 14pt !important;
+        margin: 10px 0 5px !important;
+    }
+
+    .receipt-header p {
+        color: #FFD700 !important;
+        font-size: 10pt !important;
+        margin: 0 !important;
+    }
+
+    .receipt-body {
+        padding: 20px !important;
+    }
+
+    .receipt-row {
+        display: flex !important;
+        justify-content: space-between !important;
+        padding: 8px 0 !important;
+        border-bottom: 1px dotted #ccc !important;
+    }
+
+    .receipt-row span {
+        color: #666 !important;
+    }
+
+    .receipt-row strong {
+        color: #000 !important;
+    }
+
+    .receipt-amount {
+        background: #E8F5E9 !important;
+        text-align: center !important;
+        padding: 15px !important;
+        margin: 15px 0 !important;
+        border-radius: 8px !important;
+        font-size: 20pt !important;
+        font-weight: bold !important;
+        color: #2E7D32 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .receipt-footer {
+        background: #f9f9f9 !important;
+        padding: 15px !important;
+        text-align: center !important;
+        border-top: 2px dashed #FFD700 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .receipt-footer p {
+        margin: 3px 0 !important;
+        font-size: 9pt !important;
+        color: #666 !important;
+    }
+
+    .receipt-footer p:first-child {
+        color: #C73E2C !important;
+        font-weight: bold !important;
+        font-size: 11pt !important;
+    }
+}
+
+/* ============================================
+   Sankalp Patra - A4 Landscape Print
+   ============================================ */
+
+@media print {
+
+    .sankalp-page .certificate-container,
+    .generated-certificate {
+        width: 100% !important;
+        height: auto !important;
+        padding: 20px !important;
+        background: #FFF8E1 !important;
+        border: 3px double #C73E2C !important;
+        page-break-inside: avoid !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .certificate-header {
+        text-align: center !important;
+        border-bottom: 2px solid #FFD700 !important;
+        padding-bottom: 15px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .certificate-header h1 {
+        color: #C73E2C !important;
+        font-size: 20pt !important;
+        margin: 0 0 5px !important;
+    }
+
+    .certificate-header h2 {
+        color: #FF8F00 !important;
+        font-size: 16pt !important;
+        margin: 0 !important;
+    }
+
+    .shloka,
+    .certificate-shloka {
+        text-align: center !important;
+        font-style: italic !important;
+        color: #8B4513 !important;
+        font-size: 11pt !important;
+        margin: 15px 0 !important;
+        line-height: 1.8 !important;
+    }
+
+    .pledge-intro,
+    .certificate-intro {
+        font-size: 12pt !important;
+        line-height: 1.8 !important;
+        margin: 20px 0 !important;
+        padding: 15px !important;
+        background: rgba(255, 255, 255, 0.7) !important;
+        border-left: 4px solid #C73E2C !important;
+    }
+
+    .pledge-text .highlight,
+    .certificate-intro strong {
+        color: #C73E2C !important;
+        font-weight: bold !important;
+    }
+
+    .pledge-points,
+    .certificate-pledges {
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 20px 0 !important;
+    }
+
+    .pledge-item,
+    .certificate-pledges li {
+        padding: 10px 15px !important;
+        margin: 10px 0 !important;
+        background: rgba(255, 255, 255, 0.6) !important;
+        border-radius: 5px !important;
+        font-size: 11pt !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .pledge-item .number {
+        display: inline-block !important;
+        width: 25px !important;
+        height: 25px !important;
+        background: #C73E2C !important;
+        color: white !important;
+        border-radius: 50% !important;
+        text-align: center !important;
+        line-height: 25px !important;
+        margin-right: 10px !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .certificate-footer,
+    .sankalp-footer {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: flex-end !important;
+        margin-top: 30px !important;
+        padding-top: 15px !important;
+        border-top: 2px dashed #FFD700 !important;
+    }
+
+    .signature-box {
+        text-align: center !important;
+        min-width: 150px !important;
+    }
+
+    .signature-box .sign-name,
+    .signature-line {
+        border-bottom: 2px solid #333 !important;
+        padding: 5px 10px !important;
+        margin-bottom: 5px !important;
+        font-family: cursive !important;
+        font-size: 14pt !important;
+    }
+
+    .prayer,
+    .certificate-prayer {
+        text-align: center !important;
+        color: #C73E2C !important;
+        font-size: 12pt !important;
+        font-weight: bold !important;
+        margin: 20px 0 !important;
+    }
+
+    /* Corner decorations */
+    .corner {
+        border-color: #FFD700 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+/* ============================================
+   ID Card - Credit Card Size Print
+   ============================================ */
+
+@media print {
+
+    .id-card-template,
+    .id-card {
+        width: 85.6mm !important;
+        height: 53.98mm !important;
+        margin: 0 auto !important;
+        border: 2px solid #C73E2C !important;
+        page-break-inside: avoid !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .id-header {
+        background: linear-gradient(135deg, #C73E2C, #E64A19) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .id-footer {
+        background: linear-gradient(135deg, #C73E2C, #E64A19) !important;
+        color: #FFD700 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+/* ============================================
+   Admin Tables - Clean A4 Layout
+   ============================================ */
+
+@media print {
+
+    /* Admin specific print styles */
+    .admin-dashboard {
+        background: white !important;
+    }
+
+    .admin-dashboard table {
+        width: 100% !important;
+        margin-top: 20px !important;
+    }
+
+    .admin-dashboard th {
+        background: #C73E2C !important;
+        color: white !important;
+        font-size: 10pt !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .admin-dashboard td {
+        font-size: 9pt !important;
+    }
+
+    /* Hide action columns */
+    .admin-dashboard th:last-child,
+    .admin-dashboard td:last-child {
+        display: none !important;
+    }
+
+    .registrations-table th:nth-child(9),
+    .registrations-table td:nth-child(9) {
+        display: none !important;
+    }
+
+    /* Daily donations summary print */
+    .daily-donations-print {
+        text-align: center !important;
+        margin-bottom: 20px !important;
+    }
+
+    .daily-donations-print h3 {
+        font-size: 16pt !important;
+        color: #C73E2C !important;
+    }
+
+    .daily-donations-print .total {
+        font-size: 20pt !important;
+        color: #2E7D32 !important;
+        font-weight: bold !important;
+    }
+}
