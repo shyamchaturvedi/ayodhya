@@ -50,7 +50,7 @@ const Home = () => {
                         </div>
                         <div className="badge-item">
                             <FaCalendarAlt className="icon" />
-                            <span>11 मई 2026 – 22 मई 2026</span>
+                            <span>11 मई 2026 – 21 मई 2026</span>
                         </div>
                     </div>
 
