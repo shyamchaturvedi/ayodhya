@@ -1,6 +1,7 @@
 import React from 'react';
 import './Adhyaksh.css';
 import { FaOm, FaQuoteLeft } from 'react-icons/fa';
+import adhyakshaImage from '../assets/adhyaksha.jpg';
 
 const Adhyaksh = () => {
     return (
@@ -20,9 +21,8 @@ const Adhyaksh = () => {
             <section className="page-content">
                 <div className="adhyaksh-content">
                     <div className="adhyaksh-image-container premium-card">
-                        <div className="placeholder-guru-image">
-                            <img src="" alt="Shri Ram Vanshaj Bhupendra Pratap Hanuman Maharaj Ji" style={{ display: 'none' }} />
-                            <div className="guru-placeholder-icon">🕉️</div>
+                        <div className="guru-image-wrapper">
+                            <img src={adhyakshaImage} alt="Shri Ram Vanshaj Bhupendra Pratap Hanuman Maharaj Ji" className="guru-image" />
                         </div>
                     </div>
 
