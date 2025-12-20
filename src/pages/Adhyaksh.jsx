@@ -34,7 +34,7 @@ const Adhyaksh = () => {
                         <div className="corner-decoration corner-br"></div>
 
                         <h2 className="guru-name">श्री राम वंशज भूपेन्द्र प्रताप हनुमान महाराज जी</h2>
-                        <h3 className="guru-title">श्री राम सेना अयोध्या प्रमुख</h3>
+                        <h3 className="guru-title">महायज्ञ संकल्प मुख्य आयोजक</h3>
 
                         <p className="guru-description">
                             परम पूज्य महाराज जी, जो स्वयं श्री राम वंशज हैं, इस ऐतिहासिक 9011 कुंडीय महायज्ञ के अध्यक्ष हैं।

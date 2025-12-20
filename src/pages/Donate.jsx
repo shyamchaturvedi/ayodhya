@@ -142,10 +142,11 @@ const Donate = () => {
                         <div className="bank-details">
                             <h4>Bank Transfer Details</h4>
                             <div className="bank-info">
-                                <p><span>Bank Name:</span> Union Bank of India</p>
-                                <p><span>Account Name:</span> Vishwa Shanti Mahayagya</p>
-                                <p><span>A/c No:</span> 520101264968270</p>
-                                <p><span>IFSC:</span> UBIN0929219</p>
+                                <p><span>Bank Name:</span> Punjab National Bank</p>
+                                <p><span>Account Name:</span> Bhupendra Pratap</p>
+                                <p><span>A/c No:</span> 4103000101094090</p>
+                                <p><span>IFSC:</span> PUNB0410300</p>
+                                <p><span>Branch:</span> Tilhar, Shahjahanpur</p>
                             </div>
                         </div>
                     </div>
