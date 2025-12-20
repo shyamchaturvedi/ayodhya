@@ -13,6 +13,19 @@ import ramLallaImg from '../assets/ram_lalla.webp';
 import rambhadracharyaImg from '../assets/rambhadracharya.jpg';
 import yogiAdityanathImg from '../assets/yogi_adityanath.avif';
 
+import gl1 from '../assets/GL1.jpeg';
+import gl2 from '../assets/GL2.jpeg';
+import gl3 from '../assets/GL3.jpeg';
+import gl4 from '../assets/GL4.jpeg';
+import gl5 from '../assets/GL5.jpeg';
+import gl6 from '../assets/GL6.jpeg';
+import gl7 from '../assets/GL7.jpeg';
+import gl8 from '../assets/GL8.jpeg';
+import gl9 from '../assets/GL9.jpeg';
+import gl10 from '../assets/GL10.jpeg';
+import gl11 from '../assets/GL11.jpeg';
+import gl12 from '../assets/GL12.jpeg';
+
 const Media = () => {
     const saints = [
         { name: 'राजा भगीरथ', desc: 'Raja Bhagirath', img: bhagirathImg },
@@ -24,6 +37,11 @@ const Media = () => {
         { name: 'श्री रामलला', desc: 'Shri Ram Lalla', img: ramLallaImg },
         { name: 'जगद्गुरु रामभद्राचार्य जी', desc: 'Jagadguru Rambhadracharya Ji', img: rambhadracharyaImg },
         { name: 'गोरखनाथ पीठाधीश्वर', desc: 'Gorakhnath Peethadheeshwar', img: yogiAdityanathImg }
+    ];
+
+    const galleryImages = [
+        gl1, gl2, gl3, gl4, gl5, gl6,
+        gl7, gl8, gl9, gl10, gl11, gl12
     ];
 
     return (
@@ -92,12 +110,9 @@ const Media = () => {
                         <h2 className="section-title">गैलरी</h2>
                     </div>
                     <div className="gallery-grid">
-                        {[1, 2, 3, 4, 5, 6].map((item) => (
-                            <div className="gallery-item" key={item}>
-                                <div className="gallery-placeholder">
-                                    <FaImage />
-                                    <span>Coming Soon</span>
-                                </div>
+                        {galleryImages.map((imgSrc, index) => (
+                            <div className="gallery-item" key={index}>
+                                <img src={imgSrc} alt={`Gallery Image ${index + 1}`} className="gallery-img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                             </div>
                         ))}
                     </div>
