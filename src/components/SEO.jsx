@@ -5,7 +5,7 @@ const SEO = ({ title, description, keywords, image }) => {
   const siteTitle = "श्री राम राज्य महायज्ञ | 9011 कुंडीय महायज्ञ अयोध्या धाम";
   const defaultDescription = "विश्व का प्रथम 9011 कुंडीय श्री राम राज्य महायज्ञ, अयोध्या धाम में 11 मई से 21 मई 2026 तक आयोजित। राष्ट्र की एकता और सनातन धर्म के उत्थान के लिए जुड़ें।";
   const defaultKeywords = "Shri Ram Rajya Mahayagya, Ayodhya Dham, 9011 Kundiya Yagya, Sanatan Dharma, Yagya 2026, Ram Mandir Ayodhya, Ayodhya Event, Vishwa Shanti Yagya, Bhupendra Pratap Hanuman Maharaj, Hindu Rituals, Vedic Yagya, Ayodhya Mahotsav, Spiritual Event India";
-  const defaultImage = "https://shriramrajyamahayagya.com/og-image.jpg"; // Replace with actual image URL later or use a local asset if handled correctly requires public URL
+  const defaultImage = "https://www.sreeramrajyamahayagya2026.com/og-image.jpg"; // Replace with actual image URL later or use a local asset if handled correctly requires public URL
 
   return (
     <Helmet>
@@ -56,14 +56,14 @@ const SEO = ({ title, description, keywords, image }) => {
                   }
                 },
                 "image": [
-                  "https://shriramrajyamahayagya.com/logo.png",
-                  "https://shriramrajyamahayagya.com/og-image.jpg"
+                  "https://www.sreeramrajyamahayagya2026.com/logo.png",
+                  "https://www.sreeramrajyamahayagya2026.com/og-image.jpg"
                  ],
                 "description": "Join the world's first 9011 Kundiya Shri Ram Rajya Mahayagya at Ayodhya Dham from 11th May to 21st May 2026.",
                 "organizer": {
                   "@type": "Organization",
                   "name": "Shree Ram Sena",
-                  "url": "https://shriramrajyamahayagya.com"
+                  "url": "https://www.sreeramrajyamahayagya2026.com"
                 }
               }
           `
