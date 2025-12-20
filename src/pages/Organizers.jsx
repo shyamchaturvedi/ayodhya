@@ -124,8 +124,8 @@ const Organizers = () => {
                 {/* Featured Name */}
                 <section className="featured-section">
                     <div className="featured-name">
-                        <span className="featured-label">विशेष सहयोगी</span>
-                        <h2>भूपेंद्र सिंह</h2>
+                        <span className="featured-label">महायज्ञ संकल्प मुख्य आयोजक</span>
+                        <h2>भूपेंद्र प्रताप हनुमान महाराज जी</h2>
                     </div>
                 </section>
 
