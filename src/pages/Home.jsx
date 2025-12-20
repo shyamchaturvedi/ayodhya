@@ -60,7 +60,7 @@ const Home = () => {
                     </div>
 
                     <div className="countdown-container">
-                        <p className="kumbh-text">महा कुम्भ शुरू होने में</p>
+                        <p className="kumbh-text">महायज्ञ शुरू होने में</p>
                         <div className="timer-box">
                             <span className="count">{daysLeft}</span>
                             <span className="label">दिन शेष</span>
@@ -76,7 +76,7 @@ const Home = () => {
                         <h2>धर्मो रक्षति रक्षितः</h2>
                         <p>
                             अयोध्या की पावन धरा पर, त्रेता युग के समान 'राम राज्य' की पुर्नस्थापना हेतु
-                            एक ऐतिहासिक संकल्प लिया गया है। <strong>9011 कुंडीय श्री राम राज्य महायज्ञ</strong>
+                            एक ऐतिहासिक संकल्प लिया गया है। <strong>9011 कुंडीय श्री राम राज्य महायज्ञ</strong>{" "}
                             न केवल एक अनुष्ठान है, बल्कि यह सनातन धर्म के गौरव और विश्व कल्याण का शंखनाद है।
                         </p>
                         <p>
