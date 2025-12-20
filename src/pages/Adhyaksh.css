@@ -163,3 +163,52 @@
         font-size: 1rem;
     }
 }
+
+/* Divine Moments Section */
+.divine-moments {
+    margin: 4rem 0;
+    text-align: center;
+}
+
+.section-title-small {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--deep-orange);
+    margin-bottom: 2rem;
+    display: inline-block;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 0.5rem;
+}
+
+.moment-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background: #fff;
+}
+
+.moment-image-wrapper {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 4px solid var(--gold);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.moment-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.moment-card:hover .moment-image {
+    transform: scale(1.02);
+}
+
+.moment-caption {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #5D4037;
+    font-style: italic;
+}

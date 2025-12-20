@@ -2,6 +2,7 @@ import React from 'react';
 import './Adhyaksh.css';
 import { FaOm, FaQuoteLeft } from 'react-icons/fa';
 import adhyakshaImage from '../assets/adhyaksha.jpg';
+import maharajWithShishyaImage from '../assets/maharaj_with_shishya.jpg';
 
 const Adhyaksh = () => {
     return (
@@ -47,6 +48,19 @@ const Adhyaksh = () => {
                                 उस आदर्श को पुनः स्थापित करने का संकल्प लें।"
                             </p>
                         </div>
+                    </div>
+                </div>
+
+                {/* Divine Moments Section */}
+                <div className="divine-moments">
+                    <div className="section-title-center">
+                        <h2 className="section-title-small">सानिध्य एवं आशीर्वाद</h2>
+                    </div>
+                    <div className="moment-card premium-card">
+                        <div className="moment-image-wrapper">
+                            <img src={maharajWithShishyaImage} alt="Maharaj Ji with Devotees in Ayodhya" className="moment-image" />
+                        </div>
+                        <p className="moment-caption">अयोध्या धाम में शिष्यों और भक्तों के साथ महाराज जी का स्नेहपूर्ण सानिध्य।</p>
                     </div>
                 </div>
 

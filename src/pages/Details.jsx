@@ -83,27 +83,29 @@ const Details = () => {
                         <div className="corner-decoration corner-bl"></div>
                         <div className="corner-decoration corner-br"></div>
 
-                        <table className="schedule-table">
-                            <thead>
-                                <tr>
-                                    <th>समय</th>
-                                    <th>कार्यक्रम</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {dailySchedule.map((item, index) => (
-                                    <tr key={index}>
-                                        <td>
-                                            <span className="time-text">{item.time}</span>
-                                        </td>
-                                        <td>
-                                            <span className="event-icon">{item.icon}</span>
-                                            {item.event}
-                                        </td>
+                        <div className="table-responsive">
+                            <table className="schedule-table">
+                                <thead>
+                                    <tr>
+                                        <th>समय</th>
+                                        <th>कार्यक्रम</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {dailySchedule.map((item, index) => (
+                                        <tr key={index}>
+                                            <td>
+                                                <span className="time-text">{item.time}</span>
+                                            </td>
+                                            <td>
+                                                <span className="event-icon">{item.icon}</span>
+                                                {item.event}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 

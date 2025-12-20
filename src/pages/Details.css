@@ -161,6 +161,13 @@
     font-size: 1.1rem;
 }
 
+/* Responsive Table Container */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .schedule-grid {
@@ -168,13 +175,21 @@
     }
 
     .daily-schedule-card {
-        padding: 1.5rem;
+        padding: 2rem 1rem;
+        /* Reduced horizontal padding */
+    }
+
+    .schedule-table {
+        min-width: 500px;
+        /* Ensures table doesn't get crushed, triggers scroll */
     }
 
     .schedule-table th,
     .schedule-table td {
         padding: 12px 15px;
         font-size: 0.95rem;
+        white-space: nowrap;
+        /* Prevents text wrapping issues */
     }
 
     .schedule-card {
