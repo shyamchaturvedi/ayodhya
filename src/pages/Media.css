@@ -292,4 +292,8 @@
     .gallery-grid {
         grid-template-columns: 1fr;
     }
+
+    .media-hero {
+        padding: 6rem 1rem 3rem;
+    }
 }

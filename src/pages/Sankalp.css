@@ -584,4 +584,8 @@
         width: 30px;
         height: 30px;
     }
+
+    .sankalp-hero {
+        padding: 6rem 1rem 3rem;
+    }
 }

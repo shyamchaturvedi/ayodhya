@@ -251,4 +251,8 @@
     .qr-placeholder {
         padding: 1.5rem;
     }
+
+    .donate-hero {
+        padding: 6rem 1rem 3rem;
+    }
 }

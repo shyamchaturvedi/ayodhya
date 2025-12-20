@@ -286,4 +286,8 @@
     .section-title {
         font-size: 1.5rem;
     }
+
+    .organizers-hero {
+        padding: 6rem 1rem 3rem;
+    }
 }

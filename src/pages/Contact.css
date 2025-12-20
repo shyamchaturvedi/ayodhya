@@ -360,4 +360,8 @@
     .info-card {
         padding: 1.25rem;
     }
+
+    .contact-hero {
+        padding: 6rem 1rem 3rem;
+    }
 }
