@@ -479,6 +479,10 @@
     height: 60px;
     border-bottom: 2px solid #5D3A1A;
     margin-bottom: 0.5rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 5px;
 }
 
 .signature-box p {
