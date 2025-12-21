@@ -589,3 +589,64 @@
         padding: 8rem 1rem 3rem;
     }
 }
+
+/* Stamp Styles - Added for Verification */
+.stamp-wrapper {
+    display: inline-block;
+    position: relative;
+    transform: rotate(-15deg);
+    opacity: 0.85;
+    mix-blend-mode: multiply;
+}
+
+.stamp-circle {
+    width: 90px;
+    height: 90px;
+    border: 3px double #1a237e;
+    /* Blue Stamp Ink */
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #1a237e;
+    padding: 2px;
+    box-shadow: 0 0 0 1px #1a237e inset;
+    background: rgba(26, 35, 126, 0.02);
+}
+
+.stamp-text {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stamp-main {
+    font-size: 1rem;
+    font-weight: 800;
+    margin: 2px 0;
+    text-transform: uppercase;
+    border-top: 1px solid #1a237e;
+    border-bottom: 1px solid #1a237e;
+    padding: 1px 0;
+}
+
+.stamp-sub {
+    font-size: 0.55rem;
+    font-weight: 600;
+}
+
+/* Digital Signature Font Fallback */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+.digital-sign {
+    font-family: 'Dancing Script', cursive, sans-serif !important;
+}
+
+@media print {
+    .stamp-wrapper {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}

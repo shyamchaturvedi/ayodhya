@@ -574,6 +574,41 @@ const Sankalp = () => {
                                                     <p className="date-line">दिनांक: {formData.date}</p>
                                                     <p className="place-line">स्थान: अयोध्या धाम</p>
                                                 </div>
+
+                                                <div className="footer-center">
+                                                    <div className="stamp-box">
+                                                        <div className="stamp-inner">
+                                                            <svg width="0" height="0">
+                                                                <defs>
+                                                                    <path id="curve" d="M 10 50 A 40 40 0 1 1 90 50" />
+                                                                </defs>
+                                                            </svg>
+                                                            <div className="stamp-circle">
+                                                                <span className="stamp-top">|| श्री राम ||</span>
+                                                                <span className="stamp-mid">सत्यापित</span>
+                                                                <span className="stamp-bottom">महायज्ञ समिति</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="authority-sign">
+                                                        <p className="authority-text" style={{ fontFamily: 'Dancing Script, cursive', fontSize: '1.5rem', color: '#1a237e', transform: 'rotate(-5deg)', margin: '0' }}>RamRajyaSamiti</p>
+                                                        <p className="authority-label">अधिकृत हस्ताक्षर</p>
+                                                    </div>
+                                                </div>
+
+                                                <div className="footer-center" style={{ textAlign: 'center', margin: '0 1rem' }}>
+                                                    <div className="stamp-wrapper">
+                                                        <div className="stamp-circle">
+                                                            <div className="stamp-text">श्री राम राज्य</div>
+                                                            <div className="stamp-main">सत्यापित</div>
+                                                            <div className="stamp-sub">महायज्ञ समिति</div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="authorized-sign" style={{ marginTop: '0.5rem' }}>
+                                                        <div className="digital-sign" style={{ fontFamily: 'cursive', color: '#C73E2C', fontSize: '1.2rem' }}>YagyaSamiti</div>
+                                                        <p style={{ fontSize: '0.8rem', color: '#8B7355', margin: 0 }}>अधिकृत हस्ताक्षर</p>
+                                                    </div>
+                                                </div>
                                                 <div className="footer-right">
                                                     <div className="signature-box">
                                                         <div className="signature-line-box"></div>
