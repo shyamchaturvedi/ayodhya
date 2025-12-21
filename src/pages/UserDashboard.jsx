@@ -17,6 +17,10 @@ const UserDashboard = () => {
     const sankalpRef = useRef(null);
     const receiptRef = useRef(null);
 
+    const [isEditing, setIsEditing] = useState(false);
+    const [editFormData, setEditFormData] = useState({});
+    const [updateLoading, setUpdateLoading] = useState(false);
+
     useEffect(() => {
         const mobile = localStorage.getItem('userMobile');
         if (!mobile) {
@@ -39,6 +43,13 @@ const UserDashboard = () => {
 
             if (regError) throw regError;
             setUserData(regData);
+            setEditFormData({
+                name: regData.name,
+                gotra: regData.gotra || '',
+                family_members: regData.family_members || 1,
+                city: regData.city || '',
+                state: regData.state || ''
+            });
 
             // Fetch user donations
             const { data: donationData } = await supabase
@@ -53,6 +64,45 @@ const UserDashboard = () => {
             console.error("Error fetching data:", err);
         } finally {
             setLoading(false);
+        }
+    };
+
+    const handleEditChange = (e) => {
+        const { name, value } = e.target;
+        setEditFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleUpdateProfile = async (e) => {
+        e.preventDefault();
+        setUpdateLoading(true);
+        try {
+            const { error } = await supabase
+                .from('registrations')
+                .update({
+                    name: editFormData.name,
+                    gotra: editFormData.gotra,
+                    family_members: parseInt(editFormData.family_members),
+                    city: editFormData.city,
+                    state: editFormData.state
+                })
+                .eq('member_id', userData.member_id);
+
+            if (error) throw error;
+
+            setUserData(prev => ({
+                ...prev,
+                ...editFormData
+            }));
+            setIsEditing(false);
+            alert('Profile updated successfully!');
+        } catch (error) {
+            console.error('Error updating profile:', error);
+            alert('Failed to update profile. Please try again.');
+        } finally {
+            setUpdateLoading(false);
         }
     };
 
@@ -434,33 +484,142 @@ const UserDashboard = () => {
                     <div className="tab-panel overview-panel">
                         <div className="info-grid">
                             <div className="info-card">
-                                <h3>👤 Personal Details</h3>
-                                <div className="info-rows">
-                                    <div className="info-row">
-                                        <span>Name</span>
-                                        <strong>{userData.name}</strong>
-                                    </div>
-                                    <div className="info-row">
-                                        <span>Phone</span>
-                                        <strong>{userData.phone}</strong>
-                                    </div>
-                                    <div className="info-row">
-                                        <span>Gotra</span>
-                                        <strong>{userData.gotra || '-'}</strong>
-                                    </div>
-                                    <div className="info-row">
-                                        <span>Family Members</span>
-                                        <strong>{userData.family_members || 1}</strong>
-                                    </div>
-                                    <div className="info-row">
-                                        <span>City</span>
-                                        <strong>{userData.city || '-'}</strong>
-                                    </div>
-                                    <div className="info-row">
-                                        <span>State</span>
-                                        <strong>{userData.state || '-'}</strong>
-                                    </div>
+                                <div className="card-header-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+                                    <h3>👤 Personal Details</h3>
+                                    {!isEditing && (
+                                        <button
+                                            onClick={() => setIsEditing(true)}
+                                            className="btn-edit-profile"
+                                            style={{
+                                                background: 'transparent',
+                                                border: '1px solid #C73E2C',
+                                                color: '#C73E2C',
+                                                padding: '5px 10px',
+                                                borderRadius: '5px',
+                                                cursor: 'pointer',
+                                                fontSize: '0.9rem'
+                                            }}
+                                        >
+                                            ✏️ Edit
+                                        </button>
+                                    )}
                                 </div>
+
+                                {isEditing ? (
+                                    <form onSubmit={handleUpdateProfile} className="edit-profile-form">
+                                        <div className="form-group">
+                                            <label>Name</label>
+                                            <input
+                                                type="text"
+                                                name="name"
+                                                value={editFormData.name}
+                                                onChange={handleEditChange}
+                                                required
+                                                className="edit-input"
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Gotra</label>
+                                            <input
+                                                type="text"
+                                                name="gotra"
+                                                value={editFormData.gotra}
+                                                onChange={handleEditChange}
+                                                className="edit-input"
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Family Members</label>
+                                            <input
+                                                type="number"
+                                                name="family_members"
+                                                value={editFormData.family_members}
+                                                onChange={handleEditChange}
+                                                min="1"
+                                                className="edit-input"
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>City</label>
+                                            <input
+                                                type="text"
+                                                name="city"
+                                                value={editFormData.city}
+                                                onChange={handleEditChange}
+                                                required
+                                                className="edit-input"
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>State</label>
+                                            <input
+                                                type="text"
+                                                name="state"
+                                                value={editFormData.state}
+                                                onChange={handleEditChange}
+                                                className="edit-input"
+                                            />
+                                        </div>
+
+                                        <div className="edit-actions" style={{ marginTop: '15px', display: 'flex', gap: '10px' }}>
+                                            <button
+                                                type="submit"
+                                                disabled={updateLoading}
+                                                style={{
+                                                    background: '#2E7D32',
+                                                    color: 'white',
+                                                    border: 'none',
+                                                    padding: '8px 15px',
+                                                    borderRadius: '5px',
+                                                    cursor: 'pointer'
+                                                }}
+                                            >
+                                                {updateLoading ? 'Saving...' : '💾 Save'}
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={() => setIsEditing(false)}
+                                                style={{
+                                                    background: '#757575',
+                                                    color: 'white',
+                                                    border: 'none',
+                                                    padding: '8px 15px',
+                                                    borderRadius: '5px',
+                                                    cursor: 'pointer'
+                                                }}
+                                            >
+                                                ❌ Cancel
+                                            </button>
+                                        </div>
+                                    </form>
+                                ) : (
+                                    <div className="info-rows">
+                                        <div className="info-row">
+                                            <span>Name</span>
+                                            <strong>{userData.name}</strong>
+                                        </div>
+                                        <div className="info-row">
+                                            <span>Phone</span>
+                                            <strong>{userData.phone}</strong>
+                                        </div>
+                                        <div className="info-row">
+                                            <span>Gotra</span>
+                                            <strong>{userData.gotra || '-'}</strong>
+                                        </div>
+                                        <div className="info-row">
+                                            <span>Family Members</span>
+                                            <strong>{userData.family_members || 1}</strong>
+                                        </div>
+                                        <div className="info-row">
+                                            <span>City</span>
+                                            <strong>{userData.city || '-'}</strong>
+                                        </div>
+                                        <div className="info-row">
+                                            <span>State</span>
+                                            <strong>{userData.state || '-'}</strong>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
 
                             <div className="info-card">
