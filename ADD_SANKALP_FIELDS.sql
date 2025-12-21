@@ -1,0 +1,3 @@
+ALTER TABLE registrations 
+ADD COLUMN IF NOT EXISTS father_name TEXT,
+ADD COLUMN IF NOT EXISTS district TEXT;

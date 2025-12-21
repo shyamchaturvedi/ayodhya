@@ -21,6 +21,8 @@ const Sankalp = () => {
     });
     const certificateRef = useRef(null);
 
+    const [isSaved, setIsSaved] = useState(false);
+
     useEffect(() => {
         checkUserLogin();
         // Live counter simulation
@@ -45,12 +47,19 @@ const Sankalp = () => {
                 if (data && !error) {
                     setIsLoggedIn(true);
                     setUserData(data);
+
+                    const hasSavedSankalp = !!data.father_name; // Assume if father_name is there, they saved it
+                    setIsSaved(hasSavedSankalp);
+                    setShowCertificate(hasSavedSankalp);
+
                     // Pre-fill form with user data
                     setFormData(prev => ({
                         ...prev,
                         name: data.name || '',
+                        fatherName: data.father_name || '',
                         gotra: data.gotra || '',
                         village: data.city || '',
+                        district: data.district || '',
                         state: data.state || ''
                     }));
                 }
@@ -79,15 +88,49 @@ const Sankalp = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const generateCertificate = (e) => {
+    const generateCertificate = async (e) => {
         e.preventDefault();
         if (!formData.name || !formData.fatherName) {
             alert('कृपया अपना नाम और पिता का नाम भरें।');
             return;
         }
-        setShowCertificate(true);
-    };
 
+        try {
+            setLoading(true);
+            // Save to database
+            const { error } = await supabase
+                .from('registrations')
+                .update({
+                    father_name: formData.fatherName,
+                    district: formData.district,
+                    gotra: formData.gotra,
+                    city: formData.village,
+                    state: formData.state
+                })
+                .eq('phone', userData.phone);
+
+            if (error) throw error;
+
+            setIsSaved(true);
+            setShowCertificate(true);
+
+            // Refresh local data
+            setUserData(prev => ({
+                ...prev,
+                father_name: formData.fatherName,
+                district: formData.district,
+                gotra: formData.gotra,
+                city: formData.village,
+                state: formData.state
+            }));
+
+        } catch (err) {
+            console.error("Error saving sankalp:", err);
+            alert("उफ़! कुछ गलत हो गया। कृपया पुन: प्रयास करें।");
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const printCertificate = () => {
         const printWindow = window.open('', '_blank');
@@ -543,7 +586,9 @@ const Sankalp = () => {
                                 <div className="certificate-section">
                                     <div className="certificate-actions no-print">
                                         <button className="btn-action" onClick={printCertificate}>🖨️ प्रिंट करें</button>
-                                        <button className="btn-action" onClick={() => setShowCertificate(false)}>✏️ संपादित करें</button>
+                                        {!isSaved && (
+                                            <button className="btn-action" onClick={() => setShowCertificate(false)}>✏️ संपादित करें</button>
+                                        )}
                                     </div>
 
                                     <div className="sankalpatra" ref={certificateRef}>

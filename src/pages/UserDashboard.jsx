@@ -863,87 +863,90 @@ const UserDashboard = () => {
                     </div>
                 </div>
 
-                {/* Sankalp Patra Template - A4 Landscape */}
                 <div ref={sankalpRef} className="sankalp-template">
-                    <div className="sankalp-patra">
-                        <div className="sankalp-border">
-                            <div className="corner top-left"></div>
-                            <div className="corner top-right"></div>
-                            <div className="corner bottom-left"></div>
-                            <div className="corner bottom-right"></div>
+                    <div className="sankalpatra">
+                        {/* Certificate Header */}
+                        <div className="cert-header">
+                            <div className="cert-border-top"></div>
+                            <div className="cert-om">🕉️</div>
+                            <h1 className="cert-title">॥ श्री राम राज्य संकल्प पत्र ॥</h1>
+                            <p className="cert-subtitle">SHRI RAM RAJYA SANKALP PATRA</p>
+                            <p className="cert-member-id">Member ID: {userData.member_id}</p>
+                            <div className="cert-line"></div>
+                        </div>
 
-                            <header className="sankalp-header">
-                                <div className="om-left">ॐ</div>
-                                <div className="header-center">
-                                    <img src={logo} alt="Logo" className="sankalp-logo" />
-                                    <h1>॥ श्री राम राज्य महायज्ञ ॥</h1>
-                                    <h2>संकल्प पत्र</h2>
-                                    <p className="subtitle">विश्व का प्रथम श्री राम राज्य महायज्ञ • अयोध्या धाम</p>
+                        {/* Certificate Body */}
+                        <div className="cert-body">
+                            <p className="cert-intro">
+                                विश्व के प्रथम श्री राम राज्य महायज्ञ, अयोध्या धाम के पावन अवसर पर
+                            </p>
+
+                            <div className="cert-details">
+                                <div className="detail-row">
+                                    <span className="label">संकल्पकर्ता का नाम:</span>
+                                    <span className="value">{userData.name || '_______________'}</span>
                                 </div>
-                                <div className="om-right">ॐ</div>
-                            </header>
+                                <div className="detail-row">
+                                    <span className="label">पिता/पति श्री:</span>
+                                    <span className="value">_______________</span>
+                                </div>
+                                <div className="detail-row">
+                                    <span className="label">गोत्र:</span>
+                                    <span className="value">{userData.gotra || '_______________'}</span>
+                                </div>
+                                <div className="detail-row">
+                                    <span className="label">ग्राम/नगर:</span>
+                                    <span className="value">{userData.city || '_______________'}</span>
+                                </div>
+                                <div className="detail-row">
+                                    <span className="label">जिला:</span>
+                                    <span className="value">_______________</span>
+                                </div>
+                                <div className="detail-row">
+                                    <span className="label">राज्य:</span>
+                                    <span className="value">{userData.state || '_______________'}</span>
+                                </div>
+                            </div>
 
-                            <div className="sankalp-body">
-                                <p className="shloka">
-                                    ॥ स्वस्ति प्रजाभ्यः परिपालयन्तां न्याय्येन मार्गेण महीं महीशाः ।<br />
-                                    गोब्राह्मणेभ्यः शुभमस्तु नित्यं लोकाः समस्ताः सुखिनो भवन्तु ॥
+                            <div className="cert-pledge">
+                                <h3>॥ मेरा संकल्प ॥</h3>
+                                <p>
+                                    मैं संकल्प लेता/लेती हूँ कि मैं अपने जीवन में <strong>भगवान श्री राम के आदर्शों</strong> —
+                                    सत्य, धर्म, न्याय, और मर्यादा का पालन करूँगा/करूँगी।
                                 </p>
-
-                                <div className="pledge-intro">
-                                    <p>
-                                        मैं, <strong className="highlight">{userData.name}</strong>,
-                                        {userData.gotra && <> गोत्र <strong className="highlight">{userData.gotra}</strong>,</>}
-                                        निवासी <strong className="highlight">{userData.city || 'भारत'}</strong>,
-                                        राज्य <strong className="highlight">{userData.state || '-'}</strong>,
-                                        श्री अयोध्या धाम में आयोजित <strong>"विश्व के प्रथम श्री राम राज्य महायज्ञ"</strong> के
-                                        पावन अवसर पर निम्नलिखित संकल्प लेता/लेती हूँ:
-                                    </p>
-                                </div>
-
-                                <div className="pledge-points">
-                                    <div className="pledge-item">
-                                        <span className="number">१</span>
-                                        <p>मैं अपने जीवन में <strong>सत्य, धर्म और मर्यादा</strong> का पालन करूँगा/करूँगी।</p>
-                                    </div>
-                                    <div className="pledge-item">
-                                        <span className="number">२</span>
-                                        <p>मैं <strong>सनातन धर्म और राष्ट्र</strong> की सेवा के लिए सदैव तत्पर रहूँगा/रहूँगी।</p>
-                                    </div>
-                                    <div className="pledge-item">
-                                        <span className="number">३</span>
-                                        <p>मैं <strong>श्री राम राज्य के आदर्शों</strong> को अपने परिवार और समाज में स्थापित करने का प्रयास करूँगा/करूँगी।</p>
-                                    </div>
-                                    <div className="pledge-item">
-                                        <span className="number">४</span>
-                                        <p>मैं नित्य <strong>प्रभु श्री राम का स्मरण</strong> और <strong>गौ माता की सेवा</strong> करूँगा/करूँगी।</p>
-                                    </div>
-                                </div>
-
-                                <p className="prayer">
-                                    🙏 हे प्रभु श्री राम! मुझे इस संकल्प को पूर्ण करने की शक्ति प्रदान करें। 🙏
+                                <p>
+                                    मैं <strong>राष्ट्र की एकता, अखंडता और सनातन धर्म</strong> के उत्थान में अपना योगदान दूँगा/दूँगी।
+                                </p>
+                                <p>
+                                    मैं <strong>विश्व कल्याण एवं श्री राम राज्य स्थापना</strong> की इस पावन यज्ञ में तन-मन-धन से सहयोग करूँगा/करूँगी।
                                 </p>
                             </div>
 
-                            <footer className="sankalp-footer">
+                            <div className="cert-footer">
                                 <div className="footer-left">
-                                    <p><strong>दिनांक:</strong> {formatDate(new Date())}</p>
-                                    <p><strong>स्थान:</strong> अयोध्या धाम, उत्तर प्रदेश</p>
+                                    <p className="date-line"><strong>दिनांक:</strong> {new Date().toLocaleDateString('hi-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                                    <p className="place-line">स्थान: अयोध्या धाम</p>
                                 </div>
-                                <div className="footer-center">
-                                    <p>Member ID: <strong>{userData.member_id}</strong></p>
-                                </div>
-                                <div className="footer-right">
-                                    <div className="signature-box">
-                                        <p className="sign-name">{userData.name}</p>
-                                        <span>हस्ताक्षर / Signature</span>
-                                    </div>
-                                </div>
-                            </footer>
 
-                            <div className="sankalp-bottom">
-                                <p>॥ जय श्री राम ॥ जय सियाराम ॥</p>
+                                <div className="footer-right-approval">
+                                    <div className="approval-status">
+                                        <span className="check-icon">✓</span> Digitally Approved
+                                    </div>
+                                    <p className="approval-authority">Shree Ram Rajya Mahayagya Samiti</p>
+                                </div>
+                            </div>
+
+                            <div className="cert-bottom">
+                                <p className="blessing">॥ श्री राम जय राम जय जय राम ॥</p>
+                                <p className="event-info">विश्व का प्रथम श्री राम राज्य महायज्ञ | 11 - 21 मई 2026 | शरयू तट, अयोध्या धाम</p>
                             </div>
                         </div>
+
+                        {/* Decorative Corners */}
+                        <div className="corner corner-tl"></div>
+                        <div className="corner corner-tr"></div>
+                        <div className="corner corner-bl"></div>
+                        <div className="corner corner-br"></div>
                     </div>
                 </div>
             </div>
