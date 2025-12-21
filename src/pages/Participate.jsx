@@ -27,9 +27,23 @@ const Participate = () => {
         });
     };
 
-    const generateMemberId = () => {
-        const random = Math.floor(1000 + Math.random() * 9000);
-        return `RR-2026-${random}`;
+    const getNextMemberId = async () => {
+        try {
+            const { count, error } = await supabase
+                .from('registrations')
+                .select('*', { count: 'exact', head: true });
+
+            if (error) throw error;
+
+            const nextNum = (count || 0) + 1;
+            const paddedNum = nextNum.toString().padStart(3, '0');
+            return `RRY-2026/9011/${paddedNum}`;
+        } catch (err) {
+            console.error('Error generating ID:', err);
+            // Fallback random if count fails
+            const random = Math.floor(100 + Math.random() * 900); // 3 digit random
+            return `RRY-2026/9011/${random}`;
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -56,7 +70,7 @@ const Participate = () => {
             return;
         }
 
-        const newMemberId = generateMemberId();
+        const newMemberId = await getNextMemberId();
 
         try {
             // Check if phone already exists
@@ -83,7 +97,7 @@ const Participate = () => {
                     city: formData.city || null,
                     state: formData.state || null,
                     password: formData.password,
-                    payment_status: 'pending',
+                    payment_status: 'verified', // Automatic verification as requested
                     member_id: newMemberId,
                     prasad: formData.prasad
                 }])

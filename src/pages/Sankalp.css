@@ -654,3 +654,114 @@
         print-color-adjust: exact;
     }
 }
+
+/* Digital Approval Footer Styles */
+.footer-right-approval {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.approval-status {
+    color: #2e7d32;
+    /* Green for approved status */
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+}
+
+.check-icon {
+    display: inline-block;
+    background: #2e7d32;
+    color: white;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    line-height: 14px;
+    font-size: 10px;
+    margin-right: 5px;
+}
+
+.approval-authority {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: #1a237e;
+    font-weight: 700;
+    margin: 0;
+    border-top: 1px solid #1a237e;
+    padding-top: 2px;
+}
+
+/* Fix for A4 Printing Overlap & Hiding External Elements */
+.cert-content {
+    padding-bottom: 2rem;
+}
+
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 0mm;
+    }
+
+    body * {
+        visibility: hidden;
+        /* Hide everything by default */
+    }
+
+    /* Show only the certificate */
+    .sankalpatra,
+    .sankalpatra * {
+        visibility: visible;
+    }
+
+    .sankalpatra {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 20px !important;
+        background: white !important;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: none;
+        border: none;
+    }
+
+    .cert-border {
+        height: 98%;
+        width: 98%;
+        margin: auto;
+        padding: 1.5rem;
+        box-sizing: border-box;
+    }
+
+    /* Hide Header/Footer explicit */
+    header,
+    footer,
+    .navbar,
+    .header,
+    .footer,
+    .floating-whatsapp {
+        display: none !important;
+    }
+
+    /* Font sizing adjustments for print */
+    .footer-left p,
+    .approval-authority {
+        font-size: 0.75rem !important;
+    }
+
+    .cert-title {
+        margin-top: 0.5rem;
+    }
+}

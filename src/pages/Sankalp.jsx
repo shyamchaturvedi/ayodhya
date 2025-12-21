@@ -62,6 +62,15 @@ const Sankalp = () => {
         }
     };
 
+    const formatMemberId = (id) => {
+        if (!id) return 'RRY-2026/9011/001';
+        if (id.toString().includes('/9011/')) return id;
+
+        const parts = id.toString().split('-');
+        const sequence = parts[parts.length - 1];
+        return `RRY-2026/9011/${sequence}`;
+    };
+
     const handleGetCertificate = () => {
         navigate('/login');
     };
@@ -90,7 +99,7 @@ const Sankalp = () => {
                 <style>
                     @page {
                         size: A4 landscape;
-                        margin: 15mm;
+                        margin: 0;
                     }
                     * {
                         margin: 0;
@@ -99,113 +108,123 @@ const Sankalp = () => {
                     }
                     body {
                         font-family: 'Nirmala UI', 'Segoe UI', sans-serif;
-                        background: #FFF8E1;
+                        background: white;
                         color: #333;
                         -webkit-print-color-adjust: exact;
                         print-color-adjust: exact;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100vh;
+                        width: 100vw;
                     }
                     .certificate {
                         width: 100%;
-                        height: 100vh;
+                        height: 100%;
                         padding: 20px;
-                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                     }
                     .cert-border {
                         border: 4px double #C73E2C;
                         border-radius: 10px;
-                        height: 100%;
+                        width: 98%;
+                        height: 96%;
                         padding: 25px;
                         position: relative;
-                        background: linear-gradient(180deg, rgba(255,215,0,0.1) 0%, rgba(255,255,255,0.5) 50%, rgba(255,215,0,0.1) 100%);
+                        background: white;
+                        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
                     }
                     .corner {
                         position: absolute;
-                        width: 50px;
-                        height: 50px;
-                        border: 3px solid #FFD700;
+                        width: 40px;
+                        height: 40px;
+                        border: 3px solid #C73E2C;
                     }
-                    .corner-tl { top: 10px; left: 10px; border-right: none; border-bottom: none; border-top-left-radius: 8px; }
-                    .corner-tr { top: 10px; right: 10px; border-left: none; border-bottom: none; border-top-right-radius: 8px; }
-                    .corner-bl { bottom: 10px; left: 10px; border-right: none; border-top: none; border-bottom-left-radius: 8px; }
-                    .corner-br { bottom: 10px; right: 10px; border-left: none; border-top: none; border-bottom-right-radius: 8px; }
+                    .corner-tl { top: 15px; left: 15px; border-right: none; border-bottom: none; border-top-left-radius: 8px; }
+                    .corner-tr { top: 15px; right: 15px; border-left: none; border-bottom: none; border-top-right-radius: 8px; }
+                    .corner-bl { bottom: 15px; left: 15px; border-right: none; border-top: none; border-bottom-left-radius: 8px; }
+                    .corner-br { bottom: 15px; right: 15px; border-left: none; border-top: none; border-bottom-right-radius: 8px; }
                     
                     .header {
                         text-align: center;
-                        padding-bottom: 15px;
-                        border-bottom: 2px solid #FFD700;
-                        margin-bottom: 20px;
+                        margin-bottom: 10px;
+                        position: relative;
+                        z-index: 2;
                     }
-                    .om { font-size: 2.5rem; color: #C73E2C; }
+                    .om { font-size: 2.5rem; color: #C73E2C; margin-bottom: 5px; }
                     .header h1 {
                         color: #C73E2C;
-                        font-size: 26pt;
-                        margin: 10px 0 5px;
+                        font-size: 24pt;
+                        margin: 0;
+                        font-weight: bold;
                     }
                     .header h2 {
-                        color: #FF8F00;
-                        font-size: 14pt;
-                        font-weight: normal;
-                        margin: 0 0 5px;
+                        color: #888;
+                        font-size: 12pt;
+                        margin: 5px 0 0;
+                        text-transform: uppercase;
+                        letter-spacing: 2px;
                     }
                     .member-id {
                         font-size: 10pt;
                         color: #666;
-                    }
-                    .member-id code {
-                        background: #FFD700;
-                        padding: 3px 10px;
-                        border-radius: 15px;
-                        color: #333;
-                        font-weight: bold;
+                        margin-top: 5px;
+                        background: #f5f5f5;
+                        display: inline-block;
+                        padding: 2px 10px;
+                        border-radius: 12px;
                     }
                     
                     .shloka {
                         text-align: center;
                         font-style: italic;
-                        color: #8B4513;
-                        font-size: 11pt;
-                        margin: 15px 0;
-                        line-height: 1.6;
+                        color: #555;
+                        font-size: 10pt;
+                        margin: 10px 0;
+                        line-height: 1.4;
                     }
                     
                     .intro {
-                        background: rgba(255,255,255,0.7);
-                        padding: 15px 20px;
-                        border-radius: 8px;
-                        border-left: 4px solid #C73E2C;
-                        margin-bottom: 20px;
+                        text-align: justify;
+                        padding: 15px;
+                        background: #fff;
+                        border-left: 5px solid #C73E2C;
+                        margin: 10px 0;
                         font-size: 12pt;
-                        line-height: 1.8;
+                        line-height: 1.6;
                     }
-                    .intro .highlight {
-                        color: #C73E2C;
+                    .highlight {
                         font-weight: bold;
+                        color: #2c3e50;
                     }
                     
                     .pledges {
                         display: grid;
                         grid-template-columns: 1fr 1fr;
                         gap: 15px;
-                        margin-bottom: 20px;
+                        margin: 10px 0;
                     }
                     .pledge-item {
                         display: flex;
+                        align-items: center;
                         gap: 10px;
-                        align-items: flex-start;
-                        background: rgba(255,255,255,0.6);
-                        padding: 12px 15px;
-                        border-radius: 8px;
-                        font-size: 11pt;
+                        font-size: 10pt;
                     }
                     .pledge-num {
-                        width: 28px;
-                        height: 28px;
-                        background: linear-gradient(135deg, #C73E2C, #E64A19);
+                        background: #C73E2C;
                         color: white;
+                        width: 24px;
+                        height: 24px;
                         border-radius: 50%;
                         display: flex;
                         align-items: center;
                         justify-content: center;
+                        font-size: 9pt;
                         font-weight: bold;
                         flex-shrink: 0;
                     }
@@ -213,54 +232,68 @@ const Sankalp = () => {
                     .prayer {
                         text-align: center;
                         color: #C73E2C;
-                        font-size: 13pt;
                         font-weight: bold;
                         margin: 15px 0;
+                        font-size: 12pt;
                     }
                     
                     .footer {
                         display: flex;
                         justify-content: space-between;
                         align-items: flex-end;
-                        margin-top: 20px;
-                        padding-top: 15px;
-                        border-top: 2px dashed #FFD700;
+                        margin-top: auto;
+                        padding-top: 10px;
+                        border-top: 1px solid #eee;
                     }
                     .footer-left p {
-                        margin: 5px 0;
-                        font-size: 11pt;
-                    }
-                    .signature-box {
-                        text-align: center;
-                        min-width: 200px;
-                    }
-                    .signature-name {
-                        border-bottom: 2px solid #333;
-                        padding: 5px 15px;
-                        margin-bottom: 5px;
-                        font-family: cursive;
-                        font-size: 16pt;
-                        font-style: italic;
-                    }
-                    .signature-label {
                         font-size: 10pt;
-                        color: #666;
+                        margin: 3px 0;
+                        color: #444;
+                    }
+                    
+                    /* Digital Approval Style */
+                    .footer-right {
+                        text-align: right;
+                    }
+                    .approval-status {
+                        color: #2e7d32;
+                        font-size: 10pt;
+                        font-weight: bold;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        margin-bottom: 5px;
+                    }
+                    .check-icon {
+                        background: #2e7d32;
+                        color: white;
+                        border-radius: 50%;
+                        width: 16px;
+                        height: 16px;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 10px;
+                        margin-right: 5px;
+                    }
+                    .authority {
+                        color: #1a237e;
+                        font-weight: bold;
+                        font-size: 11pt;
+                        border-top: 2px solid #1a237e;
+                        padding-top: 2px;
+                        display: inline-block;
                     }
                     
                     .bottom {
                         text-align: center;
-                        margin-top: 15px;
+                        margin-top: 10px;
+                        border-top: 2px solid #C73E2C; /* Simple solid line */
+                        padding-top: 10px;
                     }
-                    .bottom .blessing {
-                        color: #C73E2C;
-                        font-size: 14pt;
-                        font-weight: bold;
-                    }
-                    .bottom .event-info {
-                        color: #666;
-                        font-size: 10pt;
-                        margin-top: 5px;
-                    }
+                    .bottom p { margin: 2px 0; }
+                    .blessing { color: #C73E2C; font-weight: bold; font-size: 12pt; }
+                    .event-info { font-size: 9pt; color: #666; }
                 </style>
             </head>
             <body>
@@ -275,7 +308,7 @@ const Sankalp = () => {
                             <div class="om">ॐ</div>
                             <h1>॥ श्री राम राज्य महायज्ञ ॥</h1>
                             <h2>संकल्प पत्र / SANKALP PATRA</h2>
-                            <p class="member-id">Member ID: <code>${userData?.member_id || 'N/A'}</code></p>
+                            <span class="member-id">Member ID: ${formatMemberId(userData?.member_id)}</span>
                         </div>
                         
                         <p class="shloka">
@@ -316,11 +349,13 @@ const Sankalp = () => {
                         <div class="footer">
                             <div class="footer-left">
                                 <p><strong>दिनांक:</strong> ${formData.date}</p>
-                                <p><strong>स्थान:</strong> अयोध्या धाम, उत्तर प्रदेश</p>
+                                <p><strong>स्थान:</strong> अयोध्या धाम</p>
                             </div>
-                            <div class="signature-box">
-                                <div class="signature-name">${formData.name}</div>
-                                <span class="signature-label">हस्ताक्षर / Signature</span>
+                            <div class="footer-right">
+                                <div class="approval-status">
+                                    <span class="check-icon">✓</span> Digitally Approved
+                                </div>
+                                <div class="authority">Shree Ram Rajya Mahayagya Samiti</div>
                             </div>
                         </div>
                         
@@ -335,7 +370,7 @@ const Sankalp = () => {
                         setTimeout(function() {
                             window.print();
                             window.close();
-                        }, 500);
+                        }, 800);
                     }
                 </script>
             </body>
@@ -518,7 +553,7 @@ const Sankalp = () => {
                                             <div className="cert-om">🕉️</div>
                                             <h1 className="cert-title">॥ श्री राम राज्य संकल्प पत्र ॥</h1>
                                             <p className="cert-subtitle">SHRI RAM RAJYA SANKALP PATRA</p>
-                                            <p className="cert-member-id">Member ID: {userData?.member_id}</p>
+                                            <p className="cert-member-id">Member ID: {formatMemberId(userData?.member_id)}</p>
                                             <div className="cert-line"></div>
                                         </div>
 
@@ -575,15 +610,11 @@ const Sankalp = () => {
                                                     <p className="place-line">स्थान: अयोध्या धाम</p>
                                                 </div>
 
-                                                <div className="footer-center" style={{ flex: 1 }}></div>
-
-                                                <div className="footer-right">
-                                                    <div className="signature-box">
-                                                        <div className="signature-line-box">
-                                                            <span className="user-sign-text" style={{ fontFamily: 'cursive', fontSize: '1.2rem' }}>{formData.name}</span>
-                                                        </div>
-                                                        <p>संकल्पकर्ता के हस्ताक्षर</p>
-                                                    </div>
+                                                <div className="footer-right-approval">
+                                                    <p className="approval-status">
+                                                        <span className="check-icon">✓</span> Digitally Approved
+                                                    </p>
+                                                    <p className="approval-authority">Shree Ram Rajya Mahayagya Samiti</p>
                                                 </div>
                                             </div>
 
