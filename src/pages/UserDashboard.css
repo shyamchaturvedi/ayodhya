@@ -28,19 +28,46 @@
     }
 }
 
-/* Main Dashboard */
+/* Main Dashboard adjustment for fixed header */
 .user-dashboard {
     min-height: 100vh;
     background: linear-gradient(180deg, #FFF8E1 0%, #FFFDE7 50%, #FFF8E1 100%);
+    padding-top: 0;
+    /* Header is sticky but relative in flow if not fixed absolute, but let's check Layout */
 }
 
 /* Hero Header */
 .dashboard-hero {
     background: linear-gradient(135deg, #C73E2C 0%, #E64A19 50%, #FF8F00 100%);
-    padding: 40px 30px;
+    padding: 60px 30px 40px;
+    /* Increased top padding to avoid cutoff */
     position: relative;
     overflow: hidden;
 }
+
+/* ... existing styles ... */
+
+@media (max-width: 768px) {
+    .dashboard-hero {
+        padding: 50px 20px 30px;
+        /* Mobile padding adjustment */
+    }
+
+    .welcome-text h1 {
+        font-size: 1.2rem;
+        /* Reduce font size to prevent overlapping/crowding */
+        margin-bottom: 5px;
+    }
+
+    .avatar {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+        margin-bottom: 15px;
+        /* Add spacing below avatar in mobile column layout */
+    }
+}
+
 
 .hero-pattern {
     position: absolute;
